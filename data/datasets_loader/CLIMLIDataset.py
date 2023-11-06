@@ -13,14 +13,14 @@ class CL1MLIDataset(Dataset):
         self.bag_ids = np.load(os.path.join(os.getcwd(), "data", "datasets", f"{dataset}", f"{dataset}_bag_ids.npy"), mmap_mode='r')
         self.labels = np.load(os.path.join(os.getcwd(), "data", "datasets", f"{dataset}", f"{dataset}_labels.npy"), mmap_mode='r')
         self.features = np.load(os.path.join(os.getcwd(), "data", "datasets",f"{dataset}", f"{dataset}_features.npy"), mmap_mode='r')
-        self.n_bags = max(self.bag_ids)
+        self.n_bags = np.unique(self.bag_ids).shape[0]
         self.train = train
 
         if n_train is None and n_test is None:
             n_train = int(0.8 * self.n_bags)
             n_test = self.n_bags - n_train
         elif n_train + n_test > self.n_bags:
-            raise ValueError(f'Not enough data, max is {self.n_bags}')
+            raise ValueError(f'Not enough data for desired train/test split, max is {self.n_bags}')
 
         self.n_train = n_train
         self.n_test = n_test
