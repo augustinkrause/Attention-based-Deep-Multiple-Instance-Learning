@@ -25,18 +25,24 @@ class CL1MLIDataset(Dataset):
         self.n_train = n_train
         self.n_test = n_test
 
-        bag_map = {}
-        for idx, bag_id in enumerate(self.bag_ids):
-            bag_map.setdefault(bag_id, []).append(idx)
+        # shuffling
+        unique_bag_ids = np.unique(self.bag_ids)
+        random.Random(seed).shuffle(unique_bag_ids)
 
-        self.bag_idx_l_train = list(bag_map.values())[:n_train]
-        self.bag_idx_l_test = list(bag_map.values())[n_train:]
+        self.bag_ids_train = unique_bag_ids[0:self.n_train]
+        self.bag_ids_test = unique_bag_ids[self.n_train:self.n_train + self.n_test]
 
     def __len__(self):
         if self.train:
             return self.n_train
         else:
             return self.n_test
+        
+    def __str__(self):
+        if self.train:
+            return f" bag_ids_train: {self.bag_ids_train}\n n_train: {self.n_train}\n n_bags:{self.n_bags}\n"
+        else :
+            return f" bag_ids_test: {self.bag_ids_test}\n n_test: {self.n_test}\n n_bags:{self.n_bags}\n"
 
     def __getitem__(self, i):
         # Return i-th bag
@@ -44,12 +50,12 @@ class CL1MLIDataset(Dataset):
 
         if self.train:
 
-            bag_map = self.bag_idx_l_train
+            bag_map = self.bag_ids_train
         else:
-            bag_map = self.bag_idx_l_test
+            bag_map = self.bag_ids_test
 
         if self.transformation:
-            return [self.transformation(feat) for feat in self.features[bag_map[i][0]:bag_map[i][-1] + 1]], max(self.labels[bag_map[i][0]:bag_map[i][-1] + 1])
+            return [self.transformation(feat) for feat in self.features[self.bag_ids == bag_map[i]]], self.labels[self.bag_ids == bag_map[i]]
         else:
-            return self.features[bag_map[i][0]:bag_map[i][-1] + 1], max(self.labels[bag_map[i][0]:bag_map[i][-1] + 1])
+            return self.features[self.bag_ids == bag_map[i]], self.labels[self.bag_ids == bag_map[i]]
 
