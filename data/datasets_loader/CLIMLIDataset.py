@@ -60,7 +60,3 @@ class CL1MLIDataset(Dataset):
         else:
             return self.features[self.bag_ids == bag_map[i]], np.max(self.labels[self.bag_ids == bag_map[i]])
 
-
-
-for bag in CL1MLIDataset("FOX"):
-    print(bag[0].shape, bag[1])

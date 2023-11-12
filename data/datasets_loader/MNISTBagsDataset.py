@@ -73,6 +73,3 @@ class MNISTBagDataset(Dataset):
         return self.features[bag_ids_i], label
 
 cd = MNISTBagDataset()
-
-# for bag in MNISTBagDataset():
-#     print(bag[0].shape, bag[1])
