@@ -16,7 +16,7 @@ class CL1MLIDataset(Dataset):
         self.n_bags = np.unique(self.bag_ids).shape[0]
         self.train = train
 
-        if n_train is None and n_test is None:
+        if n_train is None or n_test is None:
             n_train = int(0.8 * self.n_bags)
             n_test = self.n_bags - n_train
         elif n_train + n_test > self.n_bags:
@@ -25,6 +25,7 @@ class CL1MLIDataset(Dataset):
         self.n_train = n_train
         self.n_test = n_test
 
+        
         # shuffling
         unique_bag_ids = np.unique(self.bag_ids)
         random.Random(seed).shuffle(unique_bag_ids)
@@ -55,7 +56,11 @@ class CL1MLIDataset(Dataset):
             bag_map = self.bag_ids_test
 
         if self.transformation:
-            return [self.transformation(feat) for feat in self.features[self.bag_ids == bag_map[i]]], self.labels[self.bag_ids == bag_map[i]]
+            return self.transformation(self.features[self.bag_ids == bag_map[i]]), np.max(self.labels[self.bag_ids == bag_map[i]])
         else:
-            return self.features[self.bag_ids == bag_map[i]], self.labels[self.bag_ids == bag_map[i]]
+            return self.features[self.bag_ids == bag_map[i]], np.max(self.labels[self.bag_ids == bag_map[i]])
 
+
+
+for bag in CL1MLIDataset("FOX"):
+    print(bag[0].shape, bag[1])
