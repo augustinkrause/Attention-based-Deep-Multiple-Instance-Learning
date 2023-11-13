@@ -94,6 +94,6 @@ class MILModel(nn.Module):
         
         elif self.mil_type  == "instance_based":
             x = self.classifier(x)
-            x = self.mil_layer(x.T)
+            x = self.mil_layer(x.T).flatten()
 
         return x
