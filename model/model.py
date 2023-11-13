@@ -76,7 +76,7 @@ class MILModel(nn.Module):
     def forward(self, x):
         x = self.feature_extractor(torch.tensor(x))
 
-        if self.mil_type == "embedding":
+        if self.mil_type == "embedding_based":
             if self.pooling_type == "mean" or self.pooling_type == "max":
                 x = self.mil_layer(x.T).flatten()
 
