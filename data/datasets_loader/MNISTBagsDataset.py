@@ -20,28 +20,30 @@ class MNISTBagDataset(Dataset):
         self.seed = seed
         self.train = train
         self.target_number = target_number
-        create_mnist(target_number = self.target_number)
-        self.bag_ids = np.load(os.path.join(os.getcwd(), "data", "datasets", "MNIST", "MNIST_bag_ids.npz"))
-        self.n_bags = len(self.bag_ids.files) 
-
 
         if n_train is None or n_test is None:
-            n_train = int(0.8 * self.n_bags)
-            n_test = self.n_bags - n_train
-        elif n_train + n_test > self.n_bags:
-            raise ValueError(f'Not enough data for desired train/test split, max is {self.n_bags}')
-        self.n_train = n_train
-        self.n_test = n_test
+            create_mnist(target_number = self.target_number)
+
+        else:
+            create_mnist(target_number = self.target_number, num_bag_train = self.n_train,num_bag_test = self.n_test )
+
+
+        self.bag_ids_train = np.load(os.path.join(os.getcwd(), "data", "datasets", "MNIST", "MNIST_bag_ids_train.npz"))
+        self.bag_ids_test = np.load(os.path.join(os.getcwd(), "data", "datasets", "MNIST", "MNIST_bag_ids_test.npz"))
+
+
+        self.n_train = len(self.bag_ids_train.files) 
+        self.n_test = len(self.bag_ids_test.files) 
+
 
         # lazily loading data
         self.features = np.load(os.path.join(os.getcwd(), "data", "datasets", "MNIST", "MNIST_features.npy"), mmap_mode='r')
         self.labels = np.load(os.path.join(os.getcwd(), "data", "datasets", "MNIST", "MNIST_labels.npy"), mmap_mode='r')
 
-        unique_bag_ids = np.unique(self.bag_ids.files)
-        random.Random(seed).shuffle(unique_bag_ids)
-
-        self.bag_ids_train = unique_bag_ids[0:self.n_train]
-        self.bag_ids_test = unique_bag_ids[self.n_train:self.n_train + self.n_test]
+        self.bag_ids_train_ids = np.unique(self.bag_ids_train.files)
+        random.Random(seed).shuffle(self.bag_ids_train_ids)
+        self.bag_ids_test_ids = np.unique(self.bag_ids_test.files)
+        random.Random(seed).shuffle(self.bag_ids_test_ids)
 
     def __len__(self):
         if self.train:
@@ -54,22 +56,23 @@ class MNISTBagDataset(Dataset):
 
         if self.train:
 
-            bag_map = self.bag_ids_train
+            bag_map = self.bag_ids_train_ids
+            bag_ids = self.bag_ids_train
         else:
-            bag_map = self.bag_ids_test
+            bag_map = self.bag_ids_test_ids
+            bag_ids = self.bag_ids_test
 
         # return the ith bag
         if self.transformation:
-            bag_ids_i = self.bag_ids[f"{bag_map[i]}"]
+            bag_ids_i = bag_ids[bag_map[i]]
             label = 1 if self.target_number in self.labels[bag_ids_i] else 0
             return self.transformation(np.array([ feat.reshape(1,28,28) for feat in self.features[bag_ids_i] ])), label
 
         else:
-            bag_ids_i = self.bag_ids[f"{bag_map[i]}"]
+            bag_ids_i = bag_ids[bag_map[i]]
             label = 1 if self.target_number in self.labels[bag_ids_i] else 0
             return np.array([feat.reshape(1,28,28) for feat in self.features[bag_ids_i]]) , label
         
 
         return self.features[bag_ids_i], label
 
-cd = MNISTBagDataset()
