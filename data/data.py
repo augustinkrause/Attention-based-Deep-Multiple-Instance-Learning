@@ -77,8 +77,6 @@ def visualize_data(dataset, num_samples = 10):
 			if(counter == num_samples):
 				break
 
-
-
 	else:
 
 		raise ValueError('Dataset it not supported')
