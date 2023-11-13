@@ -2,9 +2,9 @@ import torch
 import torch.nn as nn
 
 
-class MILModel_Benchmark(nn.Module):
+class MILModel(nn.Module):
     def __init__(self, dataset = "MUSK1", mil_type  = "embedding_based", pooling_type = "attention"):
-        super(MILModel_Benchmark, self).__init__()
+        super(MILModel, self).__init__()
         
         if dataset == "MUSK1" or dataset == "MUSK2":
             self.input_size = 166
