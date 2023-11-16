@@ -15,7 +15,7 @@ class MILModel(nn.Module):
         
         if mil_type  == "embedding_based":
 
-            if pooling_type != "max" and pooling_type != "mean" and pooling_type != "attention" and pooling_type != "gated attention":
+            if pooling_type != "max" and pooling_type != "mean" and pooling_type != "attention" and pooling_type != "gated_attention":
 
                 raise ValueError(f"Pooling type {pooling_type} it not supported for MIL type {mil_type}")
 
@@ -57,7 +57,7 @@ class MILModel(nn.Module):
             nn.Softmax(dim=1)
             )
         
-        elif pooling_type == "gated attention":
+        elif pooling_type == "gated_attention":
             self.V = nn.Sequential(
             nn.Linear(64, 64),
             nn.Tanh(),
@@ -74,7 +74,8 @@ class MILModel(nn.Module):
 
 
     def forward(self, x):
-        x = self.feature_extractor(torch.tensor(x))
+        
+        x = self.feature_extractor(x)
 
         if self.mil_type == "embedding_based":
             if self.pooling_type == "mean" or self.pooling_type == "max":
@@ -84,7 +85,7 @@ class MILModel(nn.Module):
                 a = self.mil_layer(x)
                 x = (a * x).sum(dim = 0)
 
-            elif self.pooling_type == "gated attention":
+            elif self.pooling_type == "gated_attention":
                 U = self.U(x)
                 V = self.V(x)
                 a = nn.functional.softmax(self.mil_layer(U*V), dim = 0)
