@@ -1,4 +1,5 @@
 import torch
+import numpy as np
 
 def get_transformation(device, normalization_params=None):
 
@@ -12,6 +13,6 @@ def get_transformation(device, normalization_params=None):
         else:
             transformed_bag = bag
 
-        return torch.tensor(transformed_bag, dtype = torch.float64, device=device), torch.tensor(label, dtype = torch.float64, device=device)
+        return torch.tensor(np.array(transformed_bag), dtype = torch.float32, device=device), torch.tensor(label, dtype = torch.float32, device=device)
 
     return transformation

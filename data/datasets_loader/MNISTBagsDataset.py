@@ -1,11 +1,6 @@
 import os
-import os.path as op
-import PIL
 from torch.utils.data import Dataset
 import numpy as np
-import torch
-import torch.utils.data as data_utils
-from torchvision import datasets, transforms
 import random
 from data.data_utils.create_mnist_bags import create_mnist 
 
@@ -20,8 +15,10 @@ class MNISTBagDataset(Dataset):
         self.seed = seed
         self.train = train
         self.target_number = target_number
+        self.n_train = n_train
+        self.n_test = n_test
 
-        if n_train is None or n_test is None:
+        if self.n_train is None or self.n_test is None:
             create_mnist(target_number = self.target_number)
 
         else:
@@ -66,13 +63,9 @@ class MNISTBagDataset(Dataset):
         if self.transformation:
             bag_ids_i = bag_ids[bag_map[i]]
             label = 1 if self.target_number in self.labels[bag_ids_i] else 0
-            return self.transformation(np.array([ feat.reshape(1,28,28) for feat in self.features[bag_ids_i] ])), label
+            return self.transformation(np.array([ feat.reshape(1,28,28) for feat in self.features[bag_ids_i] ]), np.array([label]))
 
         else:
             bag_ids_i = bag_ids[bag_map[i]]
             label = 1 if self.target_number in self.labels[bag_ids_i] else 0
-            return np.array([feat.reshape(1,28,28) for feat in self.features[bag_ids_i]]) , label
-        
-
-        return self.features[bag_ids_i], label
-
+            return np.array([feat.reshape(1,28,28) for feat in self.features[bag_ids_i]]) , np.array(label)

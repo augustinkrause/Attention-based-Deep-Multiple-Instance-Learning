@@ -1,11 +1,7 @@
 import argparse
 import torch
-import torch.nn as nn
-import torch.optim as optim
-import numpy as np
 from data.data import load_data
-from model.model import MILModel
-from data.data_utils.transformations import get_transformation
+from model.model_utils.setup_model_training import setup_model_training
 
 
 def train(model, ds, n_epochs, criterion, optimizer, print_freq):
@@ -22,7 +18,7 @@ def train(model, ds, n_epochs, criterion, optimizer, print_freq):
 
 			optimizer.zero_grad()
 			output = model(bag)
-			loss = criterion(output.squeeze(), label)
+			loss = criterion(output, label)
 			loss.backward()
 			optimizer.step()
 
@@ -46,7 +42,6 @@ def test(model, ds):
 		for bag, label in ds:
 			output = model(bag)
 			pred = float((output.item() >= 0.5))
-			print(pred, label)
 			total_correct += (pred == label.item())
 			total_samples += 1
 
@@ -72,19 +67,15 @@ def main():
 	parser.add_argument('--n-train', default = 70, type=int)
 	parser.add_argument('--n-test', default = 20, type=int)
 	parser.add_argument('--learning-rate', default = 0.0005 , type=float)
-	parser.add_argument('--weight-decay', default = 0.005, type=int)
-	parser.add_argument('--momentum', default = 0.9, type=int)
+	parser.add_argument('--weight-decay', default = 0.005, type=float)
+	parser.add_argument('--momentum', default = 0.9, type=float)
+	parser.add_argument('--beta-1', default = 0.9, type=float)
+	parser.add_argument('--beta-2', default = 0.999, type=float)
 	parser.add_argument('--print-freq', default=100, type=int)
 	args = parser.parse_args()
 
-	model = MILModel(args.dataset, args.mil_type, args.pooling_type)
-	model.double()
-	device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+	model, device, optimizer, criterion, transformation = setup_model_training(args)
 	model.to(device)
-
-	optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, weight_decay=args.weight_decay)
-	criterion = nn.BCELoss()
-	transformation = get_transformation(device)
 
 	ds_train, ds_test = load_data(args.dataset, transformation=transformation, n_train = args.n_train, n_test = args.n_test)
 
