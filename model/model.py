@@ -54,7 +54,7 @@ class MILModel(nn.Module):
             nn.Linear(64, 64),
             nn.Tanh(),
             nn.Linear(64, 1),
-            nn.Softmax(dim=1)
+            nn.Softmax(dim=0)
             )
         
         elif pooling_type == "gated_attention":
@@ -106,7 +106,7 @@ class MLIMNISTModel(nn.Module):
 
         if mil_type  == "embedding_based":
 
-            if pooling_type != "max" and pooling_type != "mean" and pooling_type != "gated_attention":
+            if pooling_type != "max" and pooling_type != "mean" and pooling_type != "gated_attention" and pooling_type != "attention":
 
                 raise ValueError(f'Pooling type {pooling_type} it not supported for MIL type {mil_type}')
 
@@ -118,7 +118,6 @@ class MLIMNISTModel(nn.Module):
 
         else:
             raise ValueError(f'MIL type {mil_type} it not supported')
-
 
         self.mil_type = mil_type
         self.pooling_type = pooling_type
@@ -142,6 +141,10 @@ class MLIMNISTModel(nn.Module):
             self.attention_U = nn.Linear(500, 128)
             self.attention_w = nn.Linear(128, 1)
 
+        elif self.pooling_type == "attention":
+            self.attention_V = nn.Linear(500, 128)
+            self.attention_w = nn.Linear(128, 1)
+
     def forward(self, x):
 
         x= self.conv2d1(x)
@@ -160,6 +163,12 @@ class MLIMNISTModel(nn.Module):
                 x = torch.mean(x, dim = 0)
             elif self.pooling_type == "max":
                 x, _ = torch.max(x, dim = 0)
+            elif self.pooling_type == "attention":
+                a_1 = self.attention_V(x)
+                a_1 = self.tanh(a_1)
+                a = self.attention_w(a_1)
+                a = self.softmax(a)
+                x = torch.sum(a * x, dim = 0)
             elif self.pooling_type == "gated_attention":
                 a_1 = self.attention_V(x)
                 a_1 = self.tanh(a_1)
