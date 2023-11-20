@@ -55,8 +55,10 @@ class CL1MLIDataset(Dataset):
         else:
             bag_map = self.bag_ids_test
 
+        bag = self.features[self.bag_ids == bag_map[i]]
+        label = np.array([1])  if 1 in self.labels[self.bag_ids == bag_map[i]] else np.array([0])
         if self.transformation:
-            return self.transformation(self.features[self.bag_ids == bag_map[i]]), np.max(self.labels[self.bag_ids == bag_map[i]])
+            return self.transformation(bag, label)
         else:
-            return self.features[self.bag_ids == bag_map[i]], np.max(self.labels[self.bag_ids == bag_map[i]])
+            return bag, label
 
