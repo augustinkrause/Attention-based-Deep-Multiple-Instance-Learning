@@ -1,5 +1,4 @@
 import numpy as np
-import scipy.linalg as la
 import matplotlib.pyplot as plt
 
 
@@ -17,7 +16,7 @@ def auc(y_true, y_pred, plot=False):
 	o = y_pred.argsort()[::-1]
 
 	pos_step = 1/len([y for y in y_true if y == 1])
-	neg_step = 1/len([y for y in y_true if y == -1])
+	neg_step = 1/len([y for y in y_true if y == 0])
 
 	n = len(y_true)
 	fpr = np.zeros(n + 1) 
