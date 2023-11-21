@@ -16,8 +16,8 @@ def create_mnist(target_number, mean_bag_length = 10, var_bag_length= 2
     mnist_labels = np.load(os.path.join(os.getcwd(), "data", "datasets", "MNIST", "MNIST_labels.npy"))
 
     #ranges from where to pick the training/test samples
-    range_data_train= (0, 50000)
-    range_data_test= (50000, 70000)
+    range_data_train= (0, 60000)
+    range_data_test= (60000, 70000)
 
 
 
