@@ -12,11 +12,14 @@ def main():
 
     """
     args = get_args()
+
+    if(args.dataset != "MNIST"):
+    	raise ValueError('Dataset it not supported for visualization')
     
-    dl_train, dl_test = load_data(args.dataset, n_train=args.n_train, n_test=args.n_test)
-    # print(dl_train.__getitem__(10))
-    # print(dl_test.__getitem__(10))
-    visualize_data(args.dataset)
+    dl_train, dl_test = load_data(args.dataset)
+
+    data_to_visualize = [dl_train[i] for i in range(args.n_samples)]
+    show(data_to_visualize, args.out_folder)
 
 
 def load_data(dataset, transformation=None, n_train=None, n_test=None):
@@ -36,7 +39,7 @@ def load_data(dataset, transformation=None, n_train=None, n_test=None):
 
 
 
-def visualize_bag_mnist(bag_data, label):
+def visualize_bag_mnist(bag_data, label, out_file):
 
 
 	
@@ -62,33 +65,24 @@ def visualize_bag_mnist(bag_data, label):
         fig.delaxes(axes.flatten()[i])
 
     plt.tight_layout()
-    plt.show()
+    plt.savefig(out_file)
 
-def visualize_data(dataset, num_samples = 10):
+def show(bags_data, out_folder = os.path.join(os.getcwd(), "data", "plots")):
 
-	if dataset == "MNIST":
-
-		counter = 0
-		generatror = load_data(dataset)[0]
-
-		for bag, label in generatror:
-			visualize_bag_mnist(bag, label)
-			counter += 1
-			if(counter == num_samples):
-				break
+	# bags must belong to MNIST
 
 
+	for i, (bag, label) in enumerate(bags_data):
+		visualize_bag_mnist(bag, label, os.path.join(out_folder ,f'plot_{i})'))
 
-	else:
 
-		raise ValueError('Dataset it not supported')
 
 def get_args() -> argparse.Namespace:
     # parse arguments
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset', default='MNIST')
-    parser.add_argument('--n-train', type=int)
-    parser.add_argument('--n-test', type=int)
+    parser.add_argument('--n-samples', default= 10, type=int)
+    parser.add_argument('--out-folder', default= os.path.join(os.getcwd(), "data", "plots"))
     args = parser.parse_args()
 
     return args
