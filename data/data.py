@@ -3,20 +3,22 @@ from data.datasets_loader.CLIMLIDataset import CL1MLIDataset
 from data.datasets_loader.MNISTBagsDataset import MNISTBagDataset
 import argparse
 import math
+import os
+from pathlib import Path
 
 def main():
     """
-
+        This can be called by running "python -m data.data [PARAMETERS]
     """
     args = get_args()
 
     if(args.dataset != "MNIST"):
-    	raise ValueError('Dataset it not supported for visualization')
+        raise ValueError('Dataset it not supported for visualization')
     
-    dl_train, dl_test = load_data(args.dataset)
+    dl_train, _ = load_data(args.dataset)
 
-    data_to_visualize = [dl_train[i] for i in range(args.n_samples)]
-    show(data_to_visualize, args.out_folder)
+    data_to_visualize = [dl_train[i] for i in range(args.n_samples)] # get only the number of bags we want to visualize
+    show(data_to_visualize, args.outfolder)
 
 
 def load_data(dataset, transformation=None, n_train=None, n_test=None):
@@ -36,7 +38,7 @@ def load_data(dataset, transformation=None, n_train=None, n_test=None):
 
 
 
-def visualize_bag_mnist(bag_data, label, out_file):
+def visualize_bag_mnist(bag_data, label, outfolder=None, filename=None):
 
 
 	
@@ -62,15 +64,20 @@ def visualize_bag_mnist(bag_data, label, out_file):
         fig.delaxes(axes.flatten()[i])
 
     plt.tight_layout()
-    plt.savefig(out_file)
+    if outfolder and filename:
+        # create outfolder if not exist
+        Path(outfolder).mkdir(parents=True, exist_ok=True)        
+        plt.savefig(os.path.join(outfolder, filename))
 
-def show(bags_data, out_folder = os.path.join(os.getcwd(), "data", "plots")):
+def show(bags_data, outfolder = None):
 
 	# bags must belong to MNIST
 
-
-	for i, (bag, label) in enumerate(bags_data):
-		visualize_bag_mnist(bag, label, os.path.join(out_folder ,f'plot_{i})'))
+    for i, (bag, label) in enumerate(bags_data):
+        if outfolder:
+            visualize_bag_mnist(bag, label, outfolder, f'plot_{i}')
+        else:
+            visualize_bag_mnist(bag, label)
 
 
 
@@ -79,7 +86,7 @@ def get_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset', default='MNIST')
     parser.add_argument('--n-samples', default= 10, type=int)
-    parser.add_argument('--out-folder', default= os.path.join(os.getcwd(), "data", "plots"))
+    parser.add_argument('--outfolder', default= os.path.join(os.getcwd(), "data", "plots"))
     args = parser.parse_args()
 
     return args
