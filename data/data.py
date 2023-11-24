@@ -8,7 +8,7 @@ from pathlib import Path
 
 def main():
     """
-
+        This can be called by running "python -m data.data [PARAMETERS]
     """
     args = get_args()
 

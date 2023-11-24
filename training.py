@@ -64,6 +64,9 @@ def test(model, ds):
 
 
 def main():
+	"""
+        This can be called by running "python -m training [PARAMETERS]
+    """
 
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--n-epochs', default= 20, type=int)
