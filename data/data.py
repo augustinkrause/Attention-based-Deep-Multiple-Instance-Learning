@@ -1,9 +1,6 @@
-import numpy as np
-import scipy.linalg as la
 import matplotlib.pyplot as plt
 from data.datasets_loader.CLIMLIDataset import CL1MLIDataset
 from data.datasets_loader.MNISTBagsDataset import MNISTBagDataset
-import os
 import argparse
 import math
 
