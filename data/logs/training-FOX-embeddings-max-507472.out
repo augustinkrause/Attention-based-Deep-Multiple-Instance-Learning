@@ -1,0 +1,208 @@
+INFO:    underlay of /usr/bin/nvidia-smi required more than 50 (517) bind mounts
+Args parsed!
+Beginning training
+Beginning epoch 1
+Epoch 1, Bag number 100, Training Loss 0.70195, Training Accuracy = 0.48000
+Beginning epoch 2
+Epoch 2, Bag number 100, Training Loss 0.68421, Training Accuracy = 0.56000
+Beginning epoch 3
+Epoch 3, Bag number 100, Training Loss 0.66971, Training Accuracy = 0.55000
+Beginning epoch 4
+Epoch 4, Bag number 100, Training Loss 0.66338, Training Accuracy = 0.55000
+Beginning epoch 5
+Epoch 5, Bag number 100, Training Loss 0.65677, Training Accuracy = 0.58000
+Beginning epoch 6
+Epoch 6, Bag number 100, Training Loss 0.65367, Training Accuracy = 0.64000
+Beginning epoch 7
+Epoch 7, Bag number 100, Training Loss 0.64817, Training Accuracy = 0.70000
+Beginning epoch 8
+Epoch 8, Bag number 100, Training Loss 0.63902, Training Accuracy = 0.69000
+Beginning epoch 9
+Epoch 9, Bag number 100, Training Loss 0.62873, Training Accuracy = 0.71000
+Beginning epoch 10
+Epoch 10, Bag number 100, Training Loss 0.61659, Training Accuracy = 0.76000
+Beginning epoch 11
+Epoch 11, Bag number 100, Training Loss 0.60302, Training Accuracy = 0.79000
+Beginning epoch 12
+Epoch 12, Bag number 100, Training Loss 0.59104, Training Accuracy = 0.78000
+Beginning epoch 13
+Epoch 13, Bag number 100, Training Loss 0.56475, Training Accuracy = 0.80000
+Beginning epoch 14
+Epoch 14, Bag number 100, Training Loss 0.54789, Training Accuracy = 0.79000
+Beginning epoch 15
+Epoch 15, Bag number 100, Training Loss 0.52519, Training Accuracy = 0.83000
+Beginning epoch 16
+Epoch 16, Bag number 100, Training Loss 0.49969, Training Accuracy = 0.82000
+Beginning epoch 17
+Epoch 17, Bag number 100, Training Loss 0.46806, Training Accuracy = 0.83000
+Beginning epoch 18
+Epoch 18, Bag number 100, Training Loss 0.43202, Training Accuracy = 0.86000
+Beginning epoch 19
+Epoch 19, Bag number 100, Training Loss 0.40161, Training Accuracy = 0.88000
+Beginning epoch 20
+Epoch 20, Bag number 100, Training Loss 0.37031, Training Accuracy = 0.89000
+Beginning epoch 21
+Epoch 21, Bag number 100, Training Loss 0.36290, Training Accuracy = 0.88000
+Beginning epoch 22
+Epoch 22, Bag number 100, Training Loss 0.33873, Training Accuracy = 0.88000
+Beginning epoch 23
+Epoch 23, Bag number 100, Training Loss 0.31630, Training Accuracy = 0.90000
+Beginning epoch 24
+Epoch 24, Bag number 100, Training Loss 0.31392, Training Accuracy = 0.91000
+Beginning epoch 25
+Epoch 25, Bag number 100, Training Loss 0.29390, Training Accuracy = 0.92000
+Beginning epoch 26
+Epoch 26, Bag number 100, Training Loss 0.28071, Training Accuracy = 0.88000
+Beginning epoch 27
+Epoch 27, Bag number 100, Training Loss 0.24378, Training Accuracy = 0.91000
+Beginning epoch 28
+Epoch 28, Bag number 100, Training Loss 0.25699, Training Accuracy = 0.91000
+Beginning epoch 29
+Epoch 29, Bag number 100, Training Loss 0.21927, Training Accuracy = 0.92000
+Beginning epoch 30
+Epoch 30, Bag number 100, Training Loss 0.22528, Training Accuracy = 0.89000
+Beginning epoch 31
+Epoch 31, Bag number 100, Training Loss 0.20305, Training Accuracy = 0.93000
+Beginning epoch 32
+Epoch 32, Bag number 100, Training Loss 0.17985, Training Accuracy = 0.95000
+Beginning epoch 33
+Epoch 33, Bag number 100, Training Loss 0.18028, Training Accuracy = 0.93000
+Beginning epoch 34
+Epoch 34, Bag number 100, Training Loss 0.16862, Training Accuracy = 0.93000
+Beginning epoch 35
+Epoch 35, Bag number 100, Training Loss 0.16896, Training Accuracy = 0.92000
+Beginning epoch 36
+Epoch 36, Bag number 100, Training Loss 0.20795, Training Accuracy = 0.91000
+Beginning epoch 37
+Epoch 37, Bag number 100, Training Loss 0.16329, Training Accuracy = 0.93000
+Beginning epoch 38
+Epoch 38, Bag number 100, Training Loss 0.11664, Training Accuracy = 0.97000
+Beginning epoch 39
+Epoch 39, Bag number 100, Training Loss 0.13715, Training Accuracy = 0.95000
+Beginning epoch 40
+Epoch 40, Bag number 100, Training Loss 0.11996, Training Accuracy = 0.96000
+Beginning epoch 41
+Epoch 41, Bag number 100, Training Loss 0.09143, Training Accuracy = 0.97000
+Beginning epoch 42
+Epoch 42, Bag number 100, Training Loss 0.12245, Training Accuracy = 0.96000
+Beginning epoch 43
+Epoch 43, Bag number 100, Training Loss 0.09812, Training Accuracy = 0.96000
+Beginning epoch 44
+Epoch 44, Bag number 100, Training Loss 0.07310, Training Accuracy = 0.99000
+Beginning epoch 45
+Epoch 45, Bag number 100, Training Loss 0.07127, Training Accuracy = 0.98000
+Beginning epoch 46
+Epoch 46, Bag number 100, Training Loss 0.07141, Training Accuracy = 0.99000
+Beginning epoch 47
+Epoch 47, Bag number 100, Training Loss 0.05921, Training Accuracy = 0.99000
+Beginning epoch 48
+Epoch 48, Bag number 100, Training Loss 0.12892, Training Accuracy = 0.95000
+Beginning epoch 49
+Epoch 49, Bag number 100, Training Loss 0.07256, Training Accuracy = 0.98000
+Beginning epoch 50
+Epoch 50, Bag number 100, Training Loss 0.12190, Training Accuracy = 0.98000
+Beginning epoch 51
+Epoch 51, Bag number 100, Training Loss 0.09290, Training Accuracy = 0.99000
+Beginning epoch 52
+Epoch 52, Bag number 100, Training Loss 0.06669, Training Accuracy = 1.00000
+Beginning epoch 53
+Epoch 53, Bag number 100, Training Loss 0.08371, Training Accuracy = 0.97000
+Beginning epoch 54
+Epoch 54, Bag number 100, Training Loss 0.06088, Training Accuracy = 0.98000
+Beginning epoch 55
+Epoch 55, Bag number 100, Training Loss 0.05387, Training Accuracy = 0.99000
+Beginning epoch 56
+Epoch 56, Bag number 100, Training Loss 0.04906, Training Accuracy = 0.98000
+Beginning epoch 57
+Epoch 57, Bag number 100, Training Loss 0.04445, Training Accuracy = 1.00000
+Beginning epoch 58
+Epoch 58, Bag number 100, Training Loss 0.03988, Training Accuracy = 1.00000
+Beginning epoch 59
+Epoch 59, Bag number 100, Training Loss 0.02948, Training Accuracy = 1.00000
+Beginning epoch 60
+Epoch 60, Bag number 100, Training Loss 0.03058, Training Accuracy = 1.00000
+Beginning epoch 61
+Epoch 61, Bag number 100, Training Loss 0.03260, Training Accuracy = 0.99000
+Beginning epoch 62
+Epoch 62, Bag number 100, Training Loss 0.02341, Training Accuracy = 1.00000
+Beginning epoch 63
+Epoch 63, Bag number 100, Training Loss 0.20546, Training Accuracy = 0.98000
+Beginning epoch 64
+Epoch 64, Bag number 100, Training Loss 0.05364, Training Accuracy = 0.99000
+Beginning epoch 65
+Epoch 65, Bag number 100, Training Loss 0.04088, Training Accuracy = 0.99000
+Beginning epoch 66
+Epoch 66, Bag number 100, Training Loss 0.02853, Training Accuracy = 1.00000
+Beginning epoch 67
+Epoch 67, Bag number 100, Training Loss 0.03529, Training Accuracy = 0.99000
+Beginning epoch 68
+Epoch 68, Bag number 100, Training Loss 0.04754, Training Accuracy = 0.99000
+Beginning epoch 69
+Epoch 69, Bag number 100, Training Loss 0.02974, Training Accuracy = 1.00000
+Beginning epoch 70
+Epoch 70, Bag number 100, Training Loss 0.06966, Training Accuracy = 0.98000
+Beginning epoch 71
+Epoch 71, Bag number 100, Training Loss 0.02825, Training Accuracy = 0.99000
+Beginning epoch 72
+Epoch 72, Bag number 100, Training Loss 0.04309, Training Accuracy = 0.98000
+Beginning epoch 73
+Epoch 73, Bag number 100, Training Loss 0.05373, Training Accuracy = 0.98000
+Beginning epoch 74
+Epoch 74, Bag number 100, Training Loss 0.02318, Training Accuracy = 1.00000
+Beginning epoch 75
+Epoch 75, Bag number 100, Training Loss 0.02749, Training Accuracy = 1.00000
+Beginning epoch 76
+Epoch 76, Bag number 100, Training Loss 0.06051, Training Accuracy = 0.99000
+Beginning epoch 77
+Epoch 77, Bag number 100, Training Loss 0.34130, Training Accuracy = 0.99000
+Beginning epoch 78
+Epoch 78, Bag number 100, Training Loss 0.26799, Training Accuracy = 0.99000
+Beginning epoch 79
+Epoch 79, Bag number 100, Training Loss 0.13895, Training Accuracy = 0.98000
+Beginning epoch 80
+Epoch 80, Bag number 100, Training Loss 0.06170, Training Accuracy = 0.99000
+Beginning epoch 81
+Epoch 81, Bag number 100, Training Loss 0.07730, Training Accuracy = 0.98000
+Beginning epoch 82
+Epoch 82, Bag number 100, Training Loss 0.04317, Training Accuracy = 0.99000
+Beginning epoch 83
+Epoch 83, Bag number 100, Training Loss 0.02869, Training Accuracy = 1.00000
+Beginning epoch 84
+Epoch 84, Bag number 100, Training Loss 0.01699, Training Accuracy = 1.00000
+Beginning epoch 85
+Epoch 85, Bag number 100, Training Loss 0.03001, Training Accuracy = 1.00000
+Beginning epoch 86
+Epoch 86, Bag number 100, Training Loss 0.01651, Training Accuracy = 1.00000
+Beginning epoch 87
+Epoch 87, Bag number 100, Training Loss 0.01659, Training Accuracy = 1.00000
+Beginning epoch 88
+Epoch 88, Bag number 100, Training Loss 0.02501, Training Accuracy = 0.99000
+Beginning epoch 89
+Epoch 89, Bag number 100, Training Loss 0.04955, Training Accuracy = 0.98000
+Beginning epoch 90
+Epoch 90, Bag number 100, Training Loss 0.04061, Training Accuracy = 1.00000
+Beginning epoch 91
+Epoch 91, Bag number 100, Training Loss 0.01799, Training Accuracy = 1.00000
+Beginning epoch 92
+Epoch 92, Bag number 100, Training Loss 0.02494, Training Accuracy = 1.00000
+Beginning epoch 93
+Epoch 93, Bag number 100, Training Loss 0.02719, Training Accuracy = 1.00000
+Beginning epoch 94
+Epoch 94, Bag number 100, Training Loss 0.02352, Training Accuracy = 1.00000
+Beginning epoch 95
+Epoch 95, Bag number 100, Training Loss 0.02255, Training Accuracy = 1.00000
+Beginning epoch 96
+Epoch 96, Bag number 100, Training Loss 0.02097, Training Accuracy = 1.00000
+Beginning epoch 97
+Epoch 97, Bag number 100, Training Loss 0.05239, Training Accuracy = 0.97000
+Beginning epoch 98
+Epoch 98, Bag number 100, Training Loss 0.02049, Training Accuracy = 1.00000
+Beginning epoch 99
+Epoch 99, Bag number 100, Training Loss 0.01926, Training Accuracy = 1.00000
+Beginning epoch 100
+Epoch 100, Bag number 100, Training Loss 0.02087, Training Accuracy = 1.00000
+Test Accuracy: 0.60000
+precision: 0.60870
+recall: 0.66667
+F-Score: 0.63636
+AUC: 0.59649
