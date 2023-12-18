@@ -3,6 +3,7 @@ from data.datasets_loader.CLIMLIDataset import CL1MLIDataset
 from data.datasets_loader.MNISTBagsDataset import MNISTBagDataset
 import argparse
 import math
+import os
 
 def main():
     """
@@ -11,7 +12,7 @@ def main():
     args = get_args()
 
     if(args.dataset != "MNIST"):
-    	raise ValueError('Dataset it not supported for visualization')
+        raise ValueError('Dataset it not supported for visualization')
     
     dl_train, dl_test = load_data(args.dataset)
 
