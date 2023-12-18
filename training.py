@@ -11,27 +11,31 @@ def train(model, ds, n_epochs, criterion, optimizer, print_freq):
 	model.train()
     
 	for epoch in range(1, n_epochs +1):
-		print(f"Beginning epoch {epoch}")
+		train_single_epoch(model, ds, criterion, optimizer, print_freq, epoch)
+		
 
-		total_loss = 0.0
-		counter = 0
-		right_preds = 0
-		for bag, label in ds:
+def train_single_epoch(model, ds, criterion, optimizer, print_freq, epoch):
+	print(f"Beginning epoch {epoch}")
 
-			optimizer.zero_grad()
-			output = model(bag)
-			loss = criterion(output, label)
-			loss.backward()
-			optimizer.step()
+	total_loss = 0.0
+	counter = 0
+	right_preds = 0
+	for bag, label in ds:
 
-			total_loss += loss.item()
-			pred = float((output.item() >= 0.5))
-			right_preds += (pred == label.item()) 
+		optimizer.zero_grad()
+		output = model(bag)
+		loss = criterion(output, label)
+		loss.backward()
+		optimizer.step()
 
-			counter += 1
+		total_loss += loss.item()
+		pred = float((output.item() >= 0.5))
+		right_preds += (pred == label.item()) 
 
-			if counter % print_freq == 0:
-				print(f"Epoch {epoch}, Bag number {counter}, Training Loss {total_loss/counter:.5f}, Training Accuracy = {right_preds/counter:.5f}")
+		counter += 1
+
+		if counter % print_freq == 0:
+			print(f"Epoch {epoch}, Bag number {counter}, Training Loss {total_loss/counter:.5f}, Training Accuracy = {right_preds/counter:.5f}")
 
 
 def test(model, ds):
@@ -53,6 +57,9 @@ def test(model, ds):
 
 	y_pred = np.array(total_pred)
 	y_true = np.array(total_true)
+	return y_pred, y_true, total_correct, total_samples
+	
+def evaluate(y_pred, y_true, total_correct, total_samples):
 	accuracy = total_correct / total_samples
 
 	print(f"Test Accuracy: {accuracy:.5f}")
@@ -60,7 +67,9 @@ def test(model, ds):
 	print(f"recall: {recall_score(y_true, y_pred):.5f}")
 	print(f"F-Score: {f1_score(y_true, y_pred):.5f}")
 	print(f"AUC: {roc_auc_score(y_true, y_pred):.5f}")
+
 	return accuracy, precision_score(y_true, y_pred), recall_score(y_true, y_pred), f1_score(y_true, y_pred), roc_auc_score(y_true, y_pred)
+
 
 
 def main():
@@ -96,7 +105,8 @@ def main():
 	ds_train, ds_test = load_data(args.dataset, transformation=transformation, n_train = args.n_train, n_test = args.n_test)
 
 	train(model, ds_train, args.n_epochs, criterion, optimizer, args.print_freq)
-	test(model, ds_test)
+	y_pred, y_true, total_correct, total_samples = test(model, ds_test)
+	evaluate(y_pred, y_true, total_correct, total_samples)
 
 if __name__ == '__main__':
 	main()
