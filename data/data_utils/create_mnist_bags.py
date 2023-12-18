@@ -1,7 +1,6 @@
 import argparse
 import numpy as np
 import os
-import torch
 
 
 def main():
@@ -98,7 +97,6 @@ def create_mnist(target_number, mean_bag_length = 10, var_bag_length= 2
         else:
             pass
     
-    # TODO: storing of bag_ids
     np.savez(os.path.join(os.getcwd(), "data", "datasets", "MNIST", "MNIST_bag_ids_test.npz"), **{f"{i}":l for (i,l) in enumerate(bag_ids_test)})
 
     

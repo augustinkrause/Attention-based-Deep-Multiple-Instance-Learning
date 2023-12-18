@@ -3,6 +3,6 @@ __pycache__/
 *.py[cod]
 
 # data
-data/logs
-data/logs.zip
+#data/logs
+#data/logs.zip
 .idea/
