@@ -90,20 +90,27 @@ def chunks(arr, n_parts):
     '''
 
     l_chunks = []
+    total_len = len(arr)
+    
+    # Calculate the size of each chunk to ensure n_parts
+    k = total_len // n_parts
+    remainder = total_len % n_parts
 
-    k = math.ceil(len(arr)/n_parts)
-    for i in range(0,len(arr),k):
-
-        if i + k > len(arr):
-            l_chunks.append(arr[i : len(arr)])
-        else:
-            l_chunks.append(arr[i: i + k])
-
+    start_idx = 0
+    for i in range(n_parts):
+        # Calculate the size of the current chunk
+        current_chunk_size = k + 1 if i < remainder else k
+        
+        # Append the current chunk to the list
+        l_chunks.append(arr[start_idx : start_idx + current_chunk_size])
+        
+        # Move to the next starting index
+        start_idx += current_chunk_size
 
     return l_chunks
 
 
-def cv(ds, params, dataset, loss_function=zero_one_loss, nfolds=10, nrepetitions=1, n_epochs = 20, print_freq = 100):
+def cv(ds, params, dataset, loss_function=zero_one_loss, nfolds=10, nrepetitions=1, print_freq = 100):
 
     ''' 
     computes the n-fold cross-validation on every combination of the given parameters using the given loss function
@@ -149,7 +156,7 @@ def cv(ds, params, dataset, loss_function=zero_one_loss, nfolds=10, nrepetitions
                 testing_ds = ds_folded[part_idx].copy()
                 
                 model, optimizer, criterion = setup_model_training_cv(dataset, param_dict)
-                train(model, training_ds, n_epochs, criterion, optimizer, print_freq)
+                train(model, training_ds, param_dict["n_epochs"], criterion, optimizer, print_freq)
                 y_pred, y_true, total_correct, total_samples = test(model, testing_ds)
                 error += loss_function(y_true, y_pred)
 
@@ -162,13 +169,13 @@ def cv(ds, params, dataset, loss_function=zero_one_loss, nfolds=10, nrepetitions
     return min_param, min_error
 
 
-def nested_cv(ds, params, dataset, loss_function=zero_one_loss, outer_nfolds=10, inner_nfolds = 5, nrepetitions=1, n_epochs = 20, print_freq = 100):
+def nested_cv(ds, params, dataset, loss_function=zero_one_loss, outer_nfolds=10, inner_nfolds = 5, nrepetitions=1, print_freq = 100):
 
 	
-    min_error = np.inf 
+    error = 0
     min_param = None
     min_class = None
-
+    
     ds_folded = chunks(ds, outer_nfolds)
 
     for part_idx in range(outer_nfolds):
@@ -181,19 +188,16 @@ def nested_cv(ds, params, dataset, loss_function=zero_one_loss, outer_nfolds=10,
 
         testing_ds = ds_folded[part_idx].copy()
         
-        param_dict, error = cv(training_ds, params, "MUSK1", loss_function=loss_function, 
-        	nfolds = inner_nfolds, nrepetitions=nrepetitions, n_epochs = n_epochs, print_freq = print_freq)
+        param_dict, _ = cv(training_ds, params, "MUSK1", loss_function=loss_function, 
+        	nfolds = inner_nfolds, nrepetitions=nrepetitions, print_freq = print_freq)
 
         model, optimizer, criterion = setup_model_training_cv(dataset, param_dict)
-        train(model, training_ds, n_epochs, criterion, optimizer, print_freq)
+        train(model, training_ds, param_dict["n_epochs"], criterion, optimizer, print_freq)
         y_pred, y_true, total_correct, total_samples = test(model, testing_ds)
-        error = loss_function(y_true, y_pred)
+        error += loss_function(y_true, y_pred)
 
-        if error < min_error:
-            min_error = error
-            min_param = param_dict
 
-    return min_param, min_error
+    return error/outer_nfolds
 
 
 def main():
@@ -209,18 +213,18 @@ def main():
 	    'momentum': [0.9],
 	    'beta_1': [0.9],
 	    'beta_2': [0.999],
-	    "optimizer": ["Adam", "SGD"]
+	    "optimizer": ["Adam", "SGD"],
+	    "n_epochs": [10]
 	}
 
 
 	device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-	ds_train, ds_test = load_data("MUSK1", transformation=get_transformation(device))
+	ds_train, ds_test = load_data("MUSK2", transformation=get_transformation(device))
 
 	ds_l = [t for t in ds_train]
-	param, error = nested_cv(ds_l, params, "MUSK1")
+	error = nested_cv(ds_l, params, "MUSK2")
 
-	print("Best params: ",param)
-	print("Minimum CV error: ", error)
+	print("Generalized CV error: ", error)
 
 if __name__ == '__main__':
 	main()
