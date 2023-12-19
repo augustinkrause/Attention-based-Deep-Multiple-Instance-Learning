@@ -68,4 +68,4 @@ class MNISTBagDataset(Dataset):
         else:
             bag_ids_i = bag_ids[bag_map[i]]
             label = 1 if self.target_number in self.labels[bag_ids_i] else 0
-            return np.array([feat.reshape(1,28,28) for feat in self.features[bag_ids_i]]) , np.array(label)
+            return np.array([feat.reshape(1,28,28) for feat in self.features[bag_ids_i]]) , np.array([label])
