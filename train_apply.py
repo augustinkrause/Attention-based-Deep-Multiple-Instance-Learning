@@ -41,7 +41,6 @@ def train_apply(method = "attention", dataset = "MNIST", mil_type = "embeddings_
 	# test model
 	return test(model, ds_test)[0] # return only the predictions
 		
-
 def train_single_epoch(model, ds, criterion, optimizer, print_freq, epoch):
 	print(f"Beginning epoch {epoch}")
 
@@ -81,7 +80,7 @@ def test(model, ds):
 			total_correct += (pred == label.item())
 			total_samples += 1
 			total_pred.append(pred)
-			total_true.append(label.cpu())
+			total_true.append(label.cpu().item())
 
 	y_pred = np.array(total_pred)
 	y_true = np.array(total_true)
@@ -97,8 +96,6 @@ def evaluate(y_pred, y_true, total_correct, total_samples):
 	print(f"AUC: {roc_auc_score(y_true, y_pred):.5f}")
 
 	return accuracy, precision_score(y_true, y_pred), recall_score(y_true, y_pred), f1_score(y_true, y_pred), roc_auc_score(y_true, y_pred)
-
-
 
 def main():
 	"""
