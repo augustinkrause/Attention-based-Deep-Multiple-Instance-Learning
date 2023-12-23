@@ -4,6 +4,9 @@ from data.data import load_data
 from model.model_utils.setup_model_training import setup_model_training
 import numpy as np
 from sklearn.metrics import precision_score, recall_score, roc_auc_score, f1_score
+from data.data_utils.transformations import get_transformation
+from data.data_utils.metrics import cv, nested_cv
+from torch.utils.data import ConcatDataset
 
 def train(model, ds, n_epochs, criterion, optimizer, print_freq):
 
@@ -13,29 +16,42 @@ def train(model, ds, n_epochs, criterion, optimizer, print_freq):
 	for epoch in range(1, n_epochs +1):
 		train_single_epoch(model, ds, criterion, optimizer, print_freq, epoch)
 
-def train_apply(method = "attention", dataset = "MNIST", mil_type = "embeddings_based", n_train = 73, n_test=19, n_epochs=20):
+def train_apply(
+		method = "attention", 
+		dataset = "MNIST", 
+		parameter_grid = {
+			"n_epochs": [20],
+			"learning_rate": [0.0005],
+			"weight_decay": [0.0001],
+			"momentum": [0.9], 
+			"beta_1": 0.9,
+			"beta_2": 0.999,
+			"optimizer": ["Adam"],
+			"mil_type": ["embeddings_based"]
+		}):
 
-	# TODO: Do we want model selection here?
-	# TODO: for now I've just set the default parameters here...
-	args = {
-		"dataset" : dataset,
-		"mil_type": mil_type,
-		"pooling_type": method,
-		"learning_rate": 0.0005,
-		"momentum": 0.9,
-		"weight_decay": 0.0001,
-		"beta_1": 0.9,
-		"beta_2": 0.999
-	}
+	parameter_grid["pooling_type"] = [method]
+	device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+	# Nested CV to get generalization estimate
+	ds_train, ds_test = load_data(dataset, transformation=get_transformation(device))
+	ncv_error = nested_cv(ConcatDataset([ds_train, ds_test]), parameter_grid, dataset)
+
+	# CV to get model params (only on training data, since we want to return the predicitons on test data, which should be unseen)
+	params = cv(ds_train, parameter_grid, dataset)
+
+	# get model predictions for the found model_params
+	params["dataset"] = dataset
+	args = argparse.Namespace(**params)
 
 	# set up training and load data
 	model, device, optimizer, criterion, transformation = setup_model_training(args)
 	model.to(device)
-	ds_train, ds_test = load_data(dataset, transformation=transformation, n_train = n_train, n_test = n_test)
+	#ds_train, ds_test = load_data(dataset, transformation=transformation)
 
 	# train model
 	model.train()
-	for epoch in range(1, n_epochs +1):
+	for epoch in range(1, params["n_epochs"] + 1):
 		train_single_epoch(model, ds_train, criterion, optimizer, 100, epoch)
 
 	# test model
