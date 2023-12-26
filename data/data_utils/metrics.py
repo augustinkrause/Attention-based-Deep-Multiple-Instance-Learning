@@ -2,18 +2,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 import itertools as it
 from model.model_utils.setup_model_training import setup_model_training_cv
-from train_apply import train, test
+from training import train, test
 from data.data_utils.transformations import get_transformation
 from data.data import load_data
 import torch
-from torch.utils.data import Subset, ConcatDataset
+from torch.utils.data import Subset, ConcatDataset, Dataset
 import copy
 
 def auc(y_true, y_pred, plot=False):
 	"""
     calculates the area under the ROC the (receiver operating curve) graph of the given data
 
-    :y_ture: true predicition values {-1,1}
+    :y_true: true predicition values {-1,1}
     :y_pred: predicted values between -1 and 1
     :plot: plots the ROC graph if true
     :return: area under the ROC graph
@@ -72,9 +72,29 @@ def zero_one_loss(y_true, y_pred):
 
     return zero_one_loss
 
+def accuracy(y_true, y_pred):
+    ''' 
+    Computes the accuracy.
+    
+    :y_true: True prediction values {0, 1}
+    :y_pred: Predicted values
+    :return: The computed 0-1 loss
+    ''' 
+    if len(y_true) != len(y_pred):
+        raise ValueError("Length of y_true and y_pred must be the same.")
+
+    # Count the number of mismatches
+    num_mismatches = sum(1 for true, pred in zip(y_true, y_pred) if true == pred)
+
+    # Calculate the average 0-1 loss
+    total_samples = len(y_true)
+    accuracy = num_mismatches / total_samples
+
+    return accuracy
 
 
-def chunks(arr : torch.utils.Dataset, n_parts):
+
+def chunks(arr : Dataset, n_parts):
 
     ''' 
     divides the given Pytorch Dataset into n_parts equal partitions, if that is not possible the last partition will not be equal to the rest
@@ -106,7 +126,7 @@ def chunks(arr : torch.utils.Dataset, n_parts):
     return l_chunks
 
 
-def cv(ds, params, dataset, loss_function=zero_one_loss, nfolds=10, print_freq = 100):
+def cv(ds, params, dataset, loss_function=accuracy, nfolds=10, print_freq = 500):
 
     ''' 
     computes the n-fold cross-validation on every combination of the given parameters using the given loss function
@@ -131,26 +151,28 @@ def cv(ds, params, dataset, loss_function=zero_one_loss, nfolds=10, print_freq =
     for param_idx , param in enumerate(list(it.product(*list(params.values())))):
 
         param_dict = dict(zip(params.keys(), param))
-        print(f"Testing for parameter combination {param_dict} - {param_idx+1}/{number_params}\n")
+        print(f"Testing for parameter combination {param_dict} - {param_idx+1}/{number_params}\n", flush=True)
         error = 0
 
         ds_folded = chunks(ds, nfolds)
 
         for part_idx in range(nfolds):
 
-            print(f"In partition number {part_idx+1}/{nfolds}")
+            print(f"In partition number {part_idx+1}/{nfolds}", flush=True)
 
             training_ds = ds_folded.copy()
             del training_ds[part_idx]
             training_ds = ConcatDataset(training_ds)
             #training_ds = [element for sublist in training_ds for element in sublist]
 
-            testing_ds = copy.deepcopy(ds_folded[part_idx])
+            testing_ds = ds_folded[part_idx]
             
             model, optimizer, criterion = setup_model_training_cv(dataset, param_dict)
             train(model, training_ds, param_dict["n_epochs"], criterion, optimizer, print_freq)
             y_pred, y_true, _, _ = test(model, testing_ds)
-            error += loss_function(y_true, y_pred)
+            l = loss_function(y_true, y_pred)
+            print(f"Loss after CV iteration {part_idx + 1}: {l}", flush=True)
+            error += l
 
         error = error / nfolds
 
@@ -161,7 +183,7 @@ def cv(ds, params, dataset, loss_function=zero_one_loss, nfolds=10, print_freq =
     return min_param, min_error
 
 
-def nested_cv(ds, params, dataset, loss_function=zero_one_loss, outer_nfolds=10, inner_nfolds = 10, print_freq = 100):
+def nested_cv(ds, params, dataset, loss_function=accuracy, outer_nfolds=10, inner_nfolds = 10, print_freq = 500):
 
 	
     error = 0
@@ -170,11 +192,12 @@ def nested_cv(ds, params, dataset, loss_function=zero_one_loss, outer_nfolds=10,
 
     for part_idx in range(outer_nfolds):
 
-        print(f"In outer partition number {part_idx+1}/{outer_nfolds}")
+        print(f"In outer partition number {part_idx+1}/{outer_nfolds}", flush=True)
 
         training_ds = ds_folded.copy()
         del training_ds[part_idx]
-        training_ds = [element for sublist in training_ds for element in sublist]
+        #training_ds = [element for sublist in training_ds for element in sublist]
+        training_ds = ConcatDataset(training_ds)
 
         testing_ds = copy.deepcopy(ds_folded[part_idx])
         
@@ -184,7 +207,9 @@ def nested_cv(ds, params, dataset, loss_function=zero_one_loss, outer_nfolds=10,
         model, optimizer, criterion = setup_model_training_cv(dataset, param_dict)
         train(model, training_ds, param_dict["n_epochs"], criterion, optimizer, print_freq)
         y_pred, y_true, _, _ = test(model, testing_ds)
-        error += loss_function(y_true, y_pred)
+        l = loss_function(y_true, y_pred)
+        print(f"Loss after NCV iteration {part_idx + 1}: {l}", flush=True)
+        error += l
 
 
     return error/outer_nfolds
@@ -214,7 +239,7 @@ def main():
 	ds_l = [t for t in ds_train]
 	error = nested_cv(ds_l, params, "MUSK2")
 
-	print("Generalized CV error: ", error)
+	print(f"Generalized CV error: {error}", flush=True)
 
 if __name__ == '__main__':
 	main()

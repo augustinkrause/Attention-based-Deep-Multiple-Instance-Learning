@@ -17,7 +17,7 @@ class MILModel(nn.Module):
 
             if pooling_type != "max" and pooling_type != "mean" and pooling_type != "attention" and pooling_type != "gated_attention":
 
-                raise ValueError(f"Pooling type {pooling_type} it not supported for MIL type {mil_type}")
+                raise ValueError(f"Pooling type {pooling_type} is not supported for MIL type {mil_type}")
 
         elif mil_type  == "instance_based":
 
