@@ -18,12 +18,13 @@ class MNISTBagDataset(Dataset):
         self.n_train = n_train
         self.n_test = n_test
 
+        """
         if self.n_train is None or self.n_test is None:
             create_mnist(target_number = self.target_number)
 
         else:
             create_mnist(target_number = self.target_number, num_bag_train = self.n_train,num_bag_test = self.n_test )
-
+        """
 
         self.bag_ids_train = np.load(os.path.join(os.getcwd(), "data", "datasets", "MNIST", "MNIST_bag_ids_train.npz"))
         self.bag_ids_test = np.load(os.path.join(os.getcwd(), "data", "datasets", "MNIST", "MNIST_bag_ids_test.npz"))

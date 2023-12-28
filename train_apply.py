@@ -31,7 +31,7 @@ def train_apply(
 
 	# CV to get model params (only on training data, since we want to return the predicitons on test data, which should be unseen)
 	params, _ = cv(ds_train, parameter_grid, dataset)
-	print(f"CV found th following parameter combination: {params}")
+	print(f"CV found the following parameter combination: {params}")
 
 	# get model predictions for the found model_params
 	params["dataset"] = dataset
