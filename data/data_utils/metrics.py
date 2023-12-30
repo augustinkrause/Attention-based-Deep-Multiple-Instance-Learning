@@ -8,8 +8,9 @@ from data.data import load_data
 import torch
 from torch.utils.data import Subset, ConcatDataset, Dataset
 import copy
+import os
 
-def auc(y_true, y_pred, plot=False):
+def auc(y_true, y_pred, plot=True, filename=""):
 	"""
     calculates the area under the ROC the (receiver operating curve) graph of the given data
 
@@ -46,7 +47,7 @@ def auc(y_true, y_pred, plot=False):
 		plt.plot([0, 1], [0, 1],'r--')
 		plt.ylabel('True Positive Rate')
 		plt.xlabel('False Positive Rate')
-		plt.show()
+		plt.savefig(os.path.join(os.getcwd(), "data", "plots", filename))
 
 	return auc
 
@@ -126,7 +127,7 @@ def chunks(arr : Dataset, n_parts):
     return l_chunks
 
 
-def cv(ds, params, dataset, loss_function=accuracy, nfolds=10, print_freq = 500):
+def cv(ds, params, dataset, loss_function=zero_one_loss, nfolds=10, print_freq = 500):
 
     ''' 
     computes the n-fold cross-validation on every combination of the given parameters using the given loss function
@@ -183,7 +184,7 @@ def cv(ds, params, dataset, loss_function=accuracy, nfolds=10, print_freq = 500)
     return min_param, min_error
 
 
-def nested_cv(ds, params, dataset, loss_function=accuracy, outer_nfolds=10, inner_nfolds = 10, print_freq = 500):
+def nested_cv(ds, params, dataset, loss_function=zero_one_loss, outer_nfolds=10, inner_nfolds = 10, print_freq = 500):
 
 	
     error = 0

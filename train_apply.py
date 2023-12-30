@@ -4,7 +4,7 @@ from data.data_utils.transformations import get_transformation
 from data.data_utils.metrics import cv, nested_cv
 from torch.utils.data import ConcatDataset
 from data.data import load_data
-from model.model_utils.setup_model_training import setup_model_training
+from model.model_utils.setup_model_training import setup_model_training_cv
 from training import train_single_epoch, evaluate, test
 
 
@@ -26,7 +26,7 @@ def train_apply(
 	device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 	# Nested CV to get generalization estimate
-	ds_train, ds_test = load_data(dataset, transformation=get_transformation(device))
+	ds_train, ds_test = load_data(dataset, transformation=get_transformation(device, normalization_params=255. if dataset == "MNIST" else None))
 	#ncv_error = nested_cv(ConcatDataset([ds_train, ds_test]), parameter_grid, dataset)
 
 	# CV to get model params (only on training data, since we want to return the predicitons on test data, which should be unseen)
@@ -34,13 +34,9 @@ def train_apply(
 	print(f"CV found the following parameter combination: {params}")
 
 	# get model predictions for the found model_params
-	params["dataset"] = dataset
-	args = argparse.Namespace(**params)
-
 	# set up training and load data
-	model, device, optimizer, criterion, transformation = setup_model_training(args)
-	model.to(device)
-	ds_train, ds_test = load_data(dataset, transformation=transformation)
+	model, optimizer, criterion = setup_model_training_cv(dataset, params)
+	ds_train, ds_test = load_data(dataset, transformation=get_transformation(device, normalization_params=255. if dataset == "MNIST" else None))
 
 	# train model
 	model.train()
