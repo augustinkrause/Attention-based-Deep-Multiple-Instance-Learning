@@ -17,7 +17,7 @@ class CL1MLIDataset(Dataset):
         self.train = train
 
         if n_train is None or n_test is None:
-            n_train = int(0.8 * self.n_bags)
+            n_train = int(np.floor(0.8 * self.n_bags))
             n_test = self.n_bags - n_train
         elif n_train + n_test > self.n_bags:
             raise ValueError(f'Not enough data for desired train/test split, max is {self.n_bags}')
