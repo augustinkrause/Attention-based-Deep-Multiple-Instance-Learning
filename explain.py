@@ -8,16 +8,15 @@ from model.model import MILModel
 from model.model import MLIMNISTModel
 import matplotlib.pyplot as plt
 import math
-
+from pathlib import Path
 import math
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import numpy as np
 
-def explain(bag, label, model, plot, dataset):
+def explain(bag, label, model, plot, dataset, outfolder=None, filename=None):
     bag.requires_grad_(True)
     res, a = model(bag)
-    print(a)
     res.backward()
     sensitivty = bag.grad**2
     
@@ -99,7 +98,10 @@ def explain(bag, label, model, plot, dataset):
         else:
             raise ValueError(f"Dataset {dataset} not supported for plotting!")
 
-        plt.show()
+        if outfolder and filename:
+            # create outfolder if not exist
+            Path(outfolder).mkdir(parents=True, exist_ok=True)        
+            plt.savefig(os.path.join(outfolder, filename))
 
     return sensitivty
 
@@ -125,7 +127,7 @@ def main():
 	
     for i in range(args.n_samples):
         bag, label = data[i]
-        explain(bag, label, model, plot = True, dataset= args.dataset)
+        explain(bag, label, model, plot = True, dataset= args.dataset, outfolder=args.outfolder, filename= f'{args.dataset}_{i}_analysis_plot')
 	
 
 
@@ -142,6 +144,7 @@ def get_args() -> argparse.Namespace:
     parser.add_argument('--pooling-type', 
 					 	default='attention',
 						choices=['max', 'mean', 'attention', 'gated_attention'])
+                        
     args = parser.parse_args()
     return args
 

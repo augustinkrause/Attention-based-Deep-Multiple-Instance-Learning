@@ -173,8 +173,6 @@ class MLIMNISTModel(nn.Module):
                 a_1 = self.tanh(a_1)
                 a = self.attention_w(a_1)
                 a = self.softmax(a)
-                print()
-                print(a)
                 x = torch.sum(a * x, dim = 0)
             elif self.pooling_type == "gated_attention":
                 a_1 = self.attention_V(x)
