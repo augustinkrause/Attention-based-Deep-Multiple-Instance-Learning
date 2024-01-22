@@ -1,0 +1,252 @@
+Dataset: MUSK1, MIL Type: embedding_based, Pooling Type: max
+Average Confidence: 0.63
+No False Negatives
+False Positive average Confidence: 0.38
+True Negative average Confidence: 0.71
+True Positives average Confidence: 0.61
+
+Dataset: MUSK1, MIL Type: embedding_based, Pooling Type: mean
+Average Confidence: 0.9
+False Negative average Confidence: 0.7
+False Positive average Confidence: 0.92
+True Negative average Confidence: 0.87
+True Positives average Confidence: 0.96
+
+Dataset: MUSK1, MIL Type: embedding_based, Pooling Type: attention
+Average Confidence: 0.8
+False Negative average Confidence: 0.34
+False Positive average Confidence: 0.08
+True Negative average Confidence: 0.89
+True Positives average Confidence: 0.92
+
+Dataset: MUSK1, MIL Type: embedding_based, Pooling Type: gated_attention
+Average Confidence: 0.4
+False Negative average Confidence: 0.71
+False Positive average Confidence: 0.48
+True Negative average Confidence: 0.52
+True Positives average Confidence: 0.13
+
+Dataset: MUSK1, MIL Type: instance_based, Pooling Type: max
+Average Confidence: 0.87
+False Negative average Confidence: 0.38
+False Positive average Confidence: 0.94
+True Negative average Confidence: 1.0
+True Positives average Confidence: 0.89
+
+Dataset: MUSK1, MIL Type: instance_based, Pooling Type: mean
+Average Confidence: 0.76
+False Negative average Confidence: 0.25
+No False Positives
+True Negative average Confidence: 0.94
+True Positives average Confidence: 0.71
+
+Dataset: MUSK2, MIL Type: embedding_based, Pooling Type: max
+Average Confidence: 0.67
+False Negative average Confidence: 0.57
+No False Positives
+True Negative average Confidence: 0.83
+True Positives average Confidence: 0.51
+
+Dataset: MUSK2, MIL Type: embedding_based, Pooling Type: mean
+Average Confidence: 0.89
+False Negative average Confidence: 0.8
+No False Positives
+True Negative average Confidence: 0.96
+True Positives average Confidence: 0.85
+
+Dataset: MUSK2, MIL Type: embedding_based, Pooling Type: attention
+Average Confidence: 0.96
+False Negative average Confidence: 0.87
+False Positive average Confidence: 0.73
+True Negative average Confidence: 1.0
+True Positives average Confidence: 0.99
+
+Dataset: MUSK2, MIL Type: embedding_based, Pooling Type: gated_attention
+Average Confidence: 0.96
+False Negative average Confidence: 1.0
+No False Positives
+True Negative average Confidence: 0.96
+True Positives average Confidence: 0.94
+
+Dataset: MUSK2, MIL Type: instance_based, Pooling Type: max
+Average Confidence: 0.88
+False Negative average Confidence: 0.73
+False Positive average Confidence: 0.93
+True Negative average Confidence: 0.98
+True Positives average Confidence: 0.86
+
+Dataset: MUSK2, MIL Type: instance_based, Pooling Type: mean
+Average Confidence: 0.72
+False Negative average Confidence: 0.36
+No False Positives
+True Negative average Confidence: 0.76
+True Positives average Confidence: 0.75
+
+Dataset: ELEPHANT, MIL Type: embedding_based, Pooling Type: max
+Average Confidence: 0.71
+False Negative average Confidence: 0.24
+No False Positives
+True Negative average Confidence: 0.68
+True Positives average Confidence: 0.76
+
+Dataset: ELEPHANT, MIL Type: embedding_based, Pooling Type: mean
+Average Confidence: 0.75
+False Negative average Confidence: 0.2
+False Positive average Confidence: 0.29
+True Negative average Confidence: 0.8
+True Positives average Confidence: 0.81
+
+Dataset: ELEPHANT, MIL Type: embedding_based, Pooling Type: attention
+Average Confidence: 0.83
+False Negative average Confidence: 0.42
+No False Positives
+True Negative average Confidence: 0.81
+True Positives average Confidence: 0.87
+
+Dataset: ELEPHANT, MIL Type: embedding_based, Pooling Type: gated_attention
+Average Confidence: 0.84
+False Negative average Confidence: 0.79
+False Positive average Confidence: 0.08
+True Negative average Confidence: 0.88
+True Positives average Confidence: 0.88
+
+Dataset: ELEPHANT, MIL Type: instance_based, Pooling Type: max
+Average Confidence: 0.93
+False Negative average Confidence: 0.97
+False Positive average Confidence: 0.62
+True Negative average Confidence: 0.98
+True Positives average Confidence: 0.97
+
+Dataset: ELEPHANT, MIL Type: instance_based, Pooling Type: mean
+Average Confidence: 0.76
+No False Negatives
+False Positive average Confidence: 0.3
+True Negative average Confidence: 0.73
+True Positives average Confidence: 0.83
+
+Dataset: TIGER, MIL Type: embedding_based, Pooling Type: max
+Average Confidence: 0.94
+False Negative average Confidence: 0.82
+False Positive average Confidence: 0.98
+True Negative average Confidence: 1.0
+True Positives average Confidence: 0.91
+
+Dataset: TIGER, MIL Type: embedding_based, Pooling Type: mean
+Average Confidence: 0.93
+False Negative average Confidence: 0.64
+False Positive average Confidence: 1.0
+True Negative average Confidence: 0.88
+True Positives average Confidence: 0.98
+
+Dataset: TIGER, MIL Type: embedding_based, Pooling Type: attention
+Average Confidence: 0.94
+False Negative average Confidence: 0.98
+False Positive average Confidence: 0.84
+True Negative average Confidence: 0.97
+True Positives average Confidence: 0.94
+
+Dataset: TIGER, MIL Type: embedding_based, Pooling Type: gated_attention
+Average Confidence: 0.69
+False Negative average Confidence: 0.45
+False Positive average Confidence: 0.62
+True Negative average Confidence: 0.66
+True Positives average Confidence: 0.76
+
+Dataset: TIGER, MIL Type: instance_based, Pooling Type: max
+Average Confidence: 0.67
+False Negative average Confidence: 0.43
+False Positive average Confidence: 0.81
+True Negative average Confidence: 0.6
+True Positives average Confidence: 0.74
+
+Dataset: TIGER, MIL Type: instance_based, Pooling Type: mean
+Average Confidence: 0.56
+False Negative average Confidence: 0.42
+False Positive average Confidence: 0.55
+True Negative average Confidence: 0.55
+True Positives average Confidence: 0.6
+
+Dataset: FOX, MIL Type: embedding_based, Pooling Type: max
+Average Confidence: 0.9
+False Negative average Confidence: 0.82
+False Positive average Confidence: 0.86
+True Negative average Confidence: 0.89
+True Positives average Confidence: 0.97
+
+Dataset: FOX, MIL Type: embedding_based, Pooling Type: mean
+Average Confidence: 0.41
+False Negative average Confidence: 0.76
+False Positive average Confidence: 0.3
+True Negative average Confidence: 0.41
+True Positives average Confidence: 0.39
+
+Dataset: FOX, MIL Type: embedding_based, Pooling Type: attention
+Average Confidence: 0.94
+False Negative average Confidence: 0.93
+False Positive average Confidence: 0.86
+True Negative average Confidence: 0.95
+True Positives average Confidence: 0.99
+
+Dataset: FOX, MIL Type: embedding_based, Pooling Type: gated_attention
+Average Confidence: 0.5
+False Negative average Confidence: 0.83
+False Positive average Confidence: 0.41
+True Negative average Confidence: 0.39
+True Positives average Confidence: 0.53
+
+Dataset: FOX, MIL Type: instance_based, Pooling Type: max
+Average Confidence: 0.9
+False Negative average Confidence: 0.88
+False Positive average Confidence: 0.88
+True Negative average Confidence: 0.89
+True Positives average Confidence: 0.94
+
+Dataset: FOX, MIL Type: instance_based, Pooling Type: mean
+Average Confidence: 0.34
+False Negative average Confidence: 0.59
+False Positive average Confidence: 0.25
+True Negative average Confidence: 0.33
+True Positives average Confidence: 0.32
+
+Dataset: MNIST, MIL Type: embedding_based, Pooling Type: max
+Average Confidence: 1.0
+False Negative average Confidence: 1.0
+False Positive average Confidence: 1.0
+True Negative average Confidence: 1.0
+True Positives average Confidence: 1.0
+
+Dataset: MNIST, MIL Type: embedding_based, Pooling Type: mean
+Average Confidence: 1.0
+False Negative average Confidence: 1.0
+False Positive average Confidence: 1.0
+True Negative average Confidence: 1.0
+True Positives average Confidence: 1.0
+
+Dataset: MNIST, MIL Type: embedding_based, Pooling Type: attention
+Average Confidence: 1.0
+False Negative average Confidence: 1.0
+No False Positives
+True Negative average Confidence: 1.0
+True Positives average Confidence: 1.0
+
+Dataset: MNIST, MIL Type: embedding_based, Pooling Type: gated_attention
+Average Confidence: 1.0
+False Negative average Confidence: 1.0
+No False Positives
+True Negative average Confidence: 1.0
+True Positives average Confidence: 1.0
+
+Dataset: MNIST, MIL Type: instance_based, Pooling Type: max
+Average Confidence: 1.0
+False Negative average Confidence: 1.0
+No False Positives
+True Negative average Confidence: 1.0
+True Positives average Confidence: 1.0
+
+Dataset: MNIST, MIL Type: instance_based, Pooling Type: mean
+Average Confidence: 0.17
+False Negative average Confidence: 0.08
+False Positive average Confidence: 0.16
+True Negative average Confidence: 0.13
+True Positives average Confidence: 0.22
+

@@ -9,6 +9,9 @@ def confidence_measure(x):  #maps (.5,1) to (0,1)
     sigma = 10              #control how much you penalize uncertainty
     return 1/(1+math.exp(-sigma*(x-.75)))
 
+def linear_confidence_measure(x):
+    return 2*x-1
+
 
 def predict(args):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -47,6 +50,17 @@ def main():
                         choices=["max", "mean", "attention", "gated_attention"])
     
     args = parser.parse_args()
+    
+    if args.input == None:
+        raise ValueError("Specify an input sample.")
+    if args.dataset == None:
+        raise ValueError("Specify a dataset, i.e. MUSK1, MUSK2, ELEPHANT, TIGER, FOX OR MNIST.")
+    if args.mil_type == None:
+        raise ValueError("Specify the MIL type, i.e. embedding- or instance-based.")
+    if args.pooling_type == None:
+        raise ValueError("Specify a pooling type, i.e. max, mean, attention or gated attention.")
+
+
     prediction, confidence = predict(args)
     print(f"Prediction: {prediction}, Confidence: {confidence}")
 
