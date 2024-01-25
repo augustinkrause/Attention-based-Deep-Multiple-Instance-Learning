@@ -31,7 +31,7 @@ def explain(bag, label, model, plot, dataset, outfolder=None, filename=None):
 
             axes_1 = subfigs[0].subplots(num_rows, num_columns)
             axes_1 = axes_1.reshape(num_rows, num_columns)
-            subfigs[0].suptitle(f'Sensitivity analysis - Label: {label.item()} - Number of instances: {num_images}', fontsize = 25)
+            subfigs[0].suptitle(f'Sensitivity analysis - Label: {label.item()} - Number of instances: {num_images}', fontsize = 35)
 
 
             for i, image in enumerate(sensitivty.cpu().numpy()):
@@ -45,13 +45,13 @@ def explain(bag, label, model, plot, dataset, outfolder=None, filename=None):
 
             axes_2 = subfigs[1].subplots(num_rows, num_columns)
             axes_2 = axes_2.reshape(num_rows, num_columns)
-            subfigs[1].suptitle(f'Attention weights - label: {label.item()} - Number of instances: {num_images}', fontsize = 25)
+            subfigs[1].suptitle(f'Attention weights - label: {label.item()} - Number of instances: {num_images}', fontsize = 35)
             max_idx = torch.argmax(a).item()
             for i, image in enumerate(bag.cpu().detach().numpy()):
 
                 ax = axes_2[i // num_columns, i % num_columns]
                 ax.imshow(image.reshape(28,28), cmap='grey')
-                ax.text(0.5, -0.15, fr'$a_{i}$ = {a[i].item():.2f}', fontsize=15, ha="center", transform=ax.transAxes)
+                ax.text(0.5, -0.15, fr'$a_{i}$ = {a[i].item():.2f}', fontsize=25, ha="center", transform=ax.transAxes)
                 ax.axis('off')
                 if i == max_idx and label == 1:
 
@@ -71,7 +71,7 @@ def explain(bag, label, model, plot, dataset, outfolder=None, filename=None):
             num_rows = math.ceil(num_images  / num_columns)
             fig, axes = plt.subplots(num_rows, num_columns, figsize=(20, 2 * num_rows))
             axes = axes.reshape(num_rows, num_columns)
-            fig.suptitle(f'Label: {label} - Number of instances: {num_images}')
+            fig.suptitle(f'Label: {label} - Number of instances: {num_images}', fontsize = 35)
 
             # this should be the bag of images
             mapped_bags = None
@@ -81,7 +81,7 @@ def explain(bag, label, model, plot, dataset, outfolder=None, filename=None):
                 ax = axes_2[i // num_columns, i % num_columns]
                 # adjust cmap to the correct one depening on thehistopatholgy inage
                 ax.imshow(image.reshape(28,28), cmap="-")
-                ax.text(0.5, -0.15, fr'$a_{i}$ = {a[i].item():.2f}', fontsize=15, ha="center", transform=ax.transAxes)
+                ax.text(0.5, -0.15, fr'$a_{i}$ = {a[i].item():.2f}', fontsize=25, ha="center", transform=ax.transAxes)
                 ax.axis('off')
                 
                 if i == max_idx and label == 1:
@@ -100,7 +100,9 @@ def explain(bag, label, model, plot, dataset, outfolder=None, filename=None):
 
         if outfolder and filename:
             # create outfolder if not exist
-            Path(outfolder).mkdir(parents=True, exist_ok=True)        
+            Path(outfolder).mkdir(parents=True, exist_ok=True)   
+            figure = plt.gcf()  # get current figure
+            figure.set_size_inches(32, 18)
             plt.savefig(os.path.join(outfolder, filename))
 
     return sensitivty
@@ -135,7 +137,7 @@ def get_args() -> argparse.Namespace:
     # parse arguments
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset', default='MNIST')
-    parser.add_argument('--n-samples', default= 5, type=int)
+    parser.add_argument('--n-samples', default= 20, type=int)
     parser.add_argument('--outfolder', default= os.path.join(os.getcwd(), "data", "plots"))
     parser.add_argument('--model-path', default=  os.path.join("model","model_parameters", "MNIST_embedding_based_attention.pt"))
     parser.add_argument('--mil-type', 
