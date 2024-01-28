@@ -24,7 +24,7 @@ def main():
     
     for sigma in ["linear", 5, 10, 15 ,20]:
 
-        output_folder = "data/predictions"
+        output_folder = "data/predictions_new"
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)
         path = os.path.join(output_folder, f"predictions{sigma}.txt")
@@ -54,6 +54,12 @@ def main():
                 FP = []
                 TN = []
                 TP = []
+                PCP = []
+                PCN = []
+                NCP = []
+                NCN = []
+                
+            
                 total = 0
                 counter = 0
                 for bag, label in ds_eval:
@@ -78,6 +84,19 @@ def main():
                             TP.append(measure)
                             #print(f"True Positive, Confidence: {measure}")    
 
+                    if measure > 0.5:
+                        if prediction == 1:
+                            PCP.append(measure)
+                        else:
+                            PCN.append(measure)
+                    else:
+                        if prediction == 1:
+                            NCP.append(measure)
+                        else:
+                            NCN.append(measure)
+                            
+
+
                 print(f"Average Confidence: {round(total/counter, ndigits=2)}")
 
                 try:
@@ -100,6 +119,35 @@ def main():
                 except:
                     print("No True Positives")     
                 print()
+                print("Confidence predictions")
+
+                try:
+                    print("Confidence", (len(PCP) + len(PCN))/len(ds_eval))
+                except:
+                    print("No Data")
+
+                try:
+                    print("None-Confidence", (len(NCN) + len(NCP))/len(ds_eval))
+                except:
+                    print("No Data")
+                
+                try:
+                    print("Positive Confidence Accuracy", len(PCP)/(len(PCP) + len(PCN)))
+                except:
+                    print("No Positive Confidence")
+
+                try:
+                    print("Negative Confidence Accuracy", len(NCN)/(len(NCN) + len(NCP)))
+                except:
+                    print("No Negative Confidence")
+                
+                
+                
+                print()
+                print()
+          
+
+
 
         sys.stdout = sys.__stdout__
 

@@ -35,7 +35,7 @@ def predict(args):
     else:
         confidence = output
 
-    return prediction, round(confidence_measure(confidence), ndigits=2)
+    return prediction, round(confidence_measure(confidence, args.sigma), ndigits=2)
 
 def main():
     parser = argparse.ArgumentParser()
