@@ -59,7 +59,7 @@ def main():
 	parser.add_argument('--n-epochs', default= [20], nargs="+", type=int)
 	parser.add_argument('--dataset', 
 					 	default='MNIST', 
-						choices=['MUSK1', 'MUSK2', 'ELEPHANT', 'TIGER', 'FOX', 'MNIST'])
+						choices=['MUSK1', 'MUSK2', 'ELEPHANT', 'TIGER', 'FOX', 'MNIST', 'TCGA'])
 	parser.add_argument('--mil-type', 
 					 	default='embedding_based',
 						choices=['embedding_based', 'instance_based'])
