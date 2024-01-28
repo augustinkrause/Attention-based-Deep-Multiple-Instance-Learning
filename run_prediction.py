@@ -54,10 +54,10 @@ def main():
                 FP = []
                 TN = []
                 TP = []
-                PCP = []
-                PCN = []
-                NCP = []
-                NCN = []
+                PCT = []
+                PCF = []
+                NCT = []
+                NCF = []
                 
             
                 total = 0
@@ -85,15 +85,15 @@ def main():
                             #print(f"True Positive, Confidence: {measure}")    
 
                     if measure > 0.5:
-                        if prediction == 1:
-                            PCP.append(measure)
+                        if prediction == label:
+                            PCT.append(measure)
                         else:
-                            PCN.append(measure)
+                            PCF.append(measure)
                     else:
-                        if prediction == 1:
-                            NCP.append(measure)
+                        if prediction == label:
+                            NCT.append(measure)
                         else:
-                            NCN.append(measure)
+                            NCF.append(measure)
                             
 
 
@@ -122,22 +122,17 @@ def main():
                 print("Confidence predictions")
 
                 try:
-                    print("Confidence", (len(PCP) + len(PCN))/len(ds_eval))
+                    print("Confidence", (len(PCT) + len(PCF))/len(ds_eval))
                 except:
                     print("No Data")
 
                 try:
-                    print("None-Confidence", (len(NCN) + len(NCP))/len(ds_eval))
-                except:
-                    print("No Data")
-                
-                try:
-                    print("Positive Confidence Accuracy", len(PCP)/(len(PCP) + len(PCN)))
+                    print("Positive Confidence Accuracy", len(PCT)/(len(PCT) + len(PCF)))
                 except:
                     print("No Positive Confidence")
 
                 try:
-                    print("Negative Confidence Accuracy", len(NCN)/(len(NCN) + len(NCP)))
+                    print("Negative Confidence Accuracy", len(NCF)/(len(NCF) + len(NCT)))
                 except:
                     print("No Negative Confidence")
                 
