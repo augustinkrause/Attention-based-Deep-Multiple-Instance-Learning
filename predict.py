@@ -5,12 +5,12 @@ import os
 from model.model import MILModel
 from model.model import MLIMNISTModel
 
-def confidence_measure(x):  #maps (.5,1) to (0,1)
-    sigma = 10              #control how much you penalize uncertainty
-    return 1/(1+math.exp(-sigma*(x-.75)))
-
-def linear_confidence_measure(x):
-    return 2*x-1
+def confidence_measure(x, sigma):  #maps (.5,1) to (0,1)
+    if type(sigma) == int:
+        sigma = sigma              #control how much you penalize uncertainty
+        return 1/(1+math.exp(-sigma*(x-.75)))
+    else:
+        return 2*x-1
 
 
 def predict(args):
