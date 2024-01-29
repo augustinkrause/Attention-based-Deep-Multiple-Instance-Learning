@@ -22,22 +22,25 @@ def train_single_epoch(model, ds, criterion, optimizer, print_freq, epoch):
 	total_loss = 0.0
 	counter = 0
 	right_preds = 0
-	for bag, label in ds:
+	try:
+		for bag, label in ds:
 
-		optimizer.zero_grad()
-		output = model(bag)
-		loss = criterion(output, label)
-		loss.backward()
-		optimizer.step()
+			optimizer.zero_grad()
+			output = model(bag)
+			loss = criterion(output, label)
+			loss.backward()
+			optimizer.step()
 
-		total_loss += loss.item()
-		pred = float((output.item() >= 0.5))
-		right_preds += (pred == label.item()) 
+			total_loss += loss.item()
+			pred = float((output.item() >= 0.5))
+			right_preds += (pred == label.item()) 
 
-		counter += 1
+			counter += 1
 
-		if counter % print_freq == 0:
-			print(f"Epoch {epoch}, Bag number {counter}, Training Loss {total_loss/counter:.5f}, Training Accuracy = {right_preds/counter:.5f}", flush=True)
+			if counter % print_freq == 0:
+				print(f"Epoch {epoch}, Bag number {counter}, Training Loss {total_loss/counter:.5f}, Training Accuracy = {right_preds/counter:.5f}", flush=True)
+	except Exception as e:
+		print(e, flush=True)
 
 
 def test(model, ds):
