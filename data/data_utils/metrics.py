@@ -127,7 +127,7 @@ def chunks(arr : Dataset, n_parts):
     return l_chunks
 
 
-def cv(ds, params, dataset, loss_function=zero_one_loss, nfolds=10, print_freq = 500):
+def cv(ds, params, dataset, loss_function=zero_one_loss, nfolds=10, print_freq = 500, model_name=None):
 
     ''' 
     computes the n-fold cross-validation on every combination of the given parameters using the given loss function
@@ -170,7 +170,7 @@ def cv(ds, params, dataset, loss_function=zero_one_loss, nfolds=10, print_freq =
                 testing_ds = ds_folded[part_idx]
                 
                 model, optimizer, criterion = setup_model_training_cv(dataset, param_dict)
-                train(model, training_ds, param_dict["n_epochs"], criterion, optimizer, print_freq)
+                train(model, training_ds, param_dict["n_epochs"], criterion, optimizer, print_freq, model_name=model_name)
                 y_pred, y_true, _, _ = test(model, testing_ds)
                 l = loss_function(y_true, y_pred)
                 print(f"Loss after CV iteration {part_idx + 1}: {l}", flush=True)

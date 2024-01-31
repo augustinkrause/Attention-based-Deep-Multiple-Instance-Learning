@@ -7,16 +7,22 @@ from model.model_utils.setup_model_training import setup_model_training, setup_m
 from data.data_utils.transformations import get_transformation
 import os
 from pathlib import Path
+from torch.utils.tensorboard import SummaryWriter
 
-def train(model, ds, n_epochs, criterion, optimizer, print_freq):
+TASK_ID = os.environ['SLURM_JOB_ID']
 
+def train(model, ds, n_epochs, criterion, optimizer, print_freq, model_name=None):
+
+	writer = None#SummaryWriter()
 	print("Beginning training", flush=True)
 	model.train()
     
 	for epoch in range(1, n_epochs +1):
-		train_single_epoch(model, ds, criterion, optimizer, print_freq, epoch)
+		train_single_epoch(model, ds, criterion, optimizer, print_freq, epoch, writer=writer, model_name=model_name)
+	#writer.flush()
+	#writer.close()
 	
-def train_single_epoch(model, ds, criterion, optimizer, print_freq, epoch):
+def train_single_epoch(model, ds, criterion, optimizer, print_freq, epoch, writer=None, model_name=None):
 	#print(f"Beginning epoch {epoch}", flush=True)
 
 	total_loss = 0.0
@@ -35,10 +41,13 @@ def train_single_epoch(model, ds, criterion, optimizer, print_freq, epoch):
 			pred = float((output.item() >= 0.5))
 			right_preds += (pred == label.item()) 
 
-			counter += 1
+			counter += 1				
 
 			if counter % print_freq == 0:
 				print(f"Epoch {epoch}, Bag number {counter}, Training Loss {total_loss/counter:.5f}, Training Accuracy = {right_preds/counter:.5f}", flush=True)
+		if writer: 
+			writer.add_scalar(f"Loss/train_{model_name}", total_loss/counter, epoch)
+			writer.add_scalar(f"Accuracy/train_{model_name}", right_preds/counter, epoch)
 	except Exception as e:
 		print(e, flush=True)
 
