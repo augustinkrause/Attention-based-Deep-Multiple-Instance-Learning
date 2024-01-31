@@ -30,7 +30,7 @@ def train_apply(
 	#ncv_error = nested_cv(ConcatDataset([ds_train, ds_test]), parameter_grid, dataset)
 
 	# CV to get model params (only on training data, since we want to return the predicitons on test data, which should be unseen)
-	params, _ = cv(ds_train, parameter_grid, dataset)
+	params, _ = cv(ds_train, parameter_grid, dataset, model_name=f"{dataset}_{parameter_grid['mil_type'][0]}_{method}")
 	print(f"CV found the following parameter combination: {params}")
 
 	# get model predictions for the found model_params
