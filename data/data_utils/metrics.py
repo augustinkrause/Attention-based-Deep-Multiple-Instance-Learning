@@ -127,7 +127,7 @@ def chunks(arr : Dataset, n_parts):
     return l_chunks
 
 
-def cv(ds, params, dataset, loss_function=zero_one_loss, nfolds=10, print_freq = 500):
+def cv(ds, params, dataset, loss_function=zero_one_loss, nfolds=10, print_freq = 500, model_name=None):
 
     ''' 
     computes the n-fold cross-validation on every combination of the given parameters using the given loss function
@@ -153,33 +153,34 @@ def cv(ds, params, dataset, loss_function=zero_one_loss, nfolds=10, print_freq =
 
         param_dict = dict(zip(params.keys(), param))
         print(f"Testing for parameter combination {param_dict} - {param_idx+1}/{number_params}\n", flush=True)
-        error = 0
+        if not (param_dict["optimizer"] == "Adam" and param_dict["momentum"] != 0):
+            error = 0
 
-        ds_folded = chunks(ds, nfolds)
+            ds_folded = chunks(ds, nfolds)
 
-        for part_idx in range(nfolds):
+            for part_idx in range(nfolds):
 
-            print(f"In partition number {part_idx+1}/{nfolds}", flush=True)
+                print(f"In partition number {part_idx+1}/{nfolds}", flush=True)
 
-            training_ds = ds_folded.copy()
-            del training_ds[part_idx]
-            training_ds = ConcatDataset(training_ds)
-            #training_ds = [element for sublist in training_ds for element in sublist]
+                training_ds = ds_folded.copy()
+                del training_ds[part_idx]
+                training_ds = ConcatDataset(training_ds)
+                #training_ds = [element for sublist in training_ds for element in sublist]
 
-            testing_ds = ds_folded[part_idx]
-            
-            model, optimizer, criterion = setup_model_training_cv(dataset, param_dict)
-            train(model, training_ds, param_dict["n_epochs"], criterion, optimizer, print_freq)
-            y_pred, y_true, _, _ = test(model, testing_ds)
-            l = loss_function(y_true, y_pred)
-            print(f"Loss after CV iteration {part_idx + 1}: {l}", flush=True)
-            error += l
+                testing_ds = ds_folded[part_idx]
+                
+                model, optimizer, criterion = setup_model_training_cv(dataset, param_dict)
+                train(model, training_ds, param_dict["n_epochs"], criterion, optimizer, print_freq, model_name=model_name)
+                y_pred, y_true, _, _ = test(model, testing_ds)
+                l = loss_function(y_true, y_pred)
+                print(f"Loss after CV iteration {part_idx + 1}: {l}", flush=True)
+                error += l
 
-        error = error / nfolds
+            error = error / nfolds
 
-        if error < min_error:
-            min_error = error
-            min_param = param_dict
+            if error < min_error:
+                min_error = error
+                min_param = param_dict
   
     return min_param, min_error
 

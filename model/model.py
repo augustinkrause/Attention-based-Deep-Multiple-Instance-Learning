@@ -10,6 +10,8 @@ class MILModel(nn.Module):
             self.input_size = 166
         elif dataset == "FOX" or dataset == "ELEPHANT" or dataset == "TIGER":
             self.input_size = 230
+        elif dataset == "TCGA":
+            self.input_size = 768
         else:
             raise ValueError("Dataset is not a classical MLI dataset")
         
