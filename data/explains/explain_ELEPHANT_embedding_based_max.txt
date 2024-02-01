@@ -1,0 +1,202 @@
+Dataset: ELEPHANT, MIL Type: embedding_based, Pooling Type: max
+
+Bag number:  0
+Sensitivty mean:  1.5396373e-10
+Sensitivty standard deviation:  1.3802567e-09
+
+
+Bag number:  1
+Sensitivty mean:  7.729489e-05
+Sensitivty standard deviation:  0.00037217233
+
+
+Bag number:  2
+Sensitivty mean:  1.0510782e-06
+Sensitivty standard deviation:  9.6945105e-06
+
+
+Bag number:  3
+Sensitivty mean:  5.0436312e-05
+Sensitivty standard deviation:  0.00039334493
+
+
+Bag number:  4
+Sensitivty mean:  1.1666166e-05
+Sensitivty standard deviation:  7.358859e-05
+
+
+Bag number:  5
+Sensitivty mean:  1.8878302e-06
+Sensitivty standard deviation:  1.1843305e-05
+
+
+Bag number:  6
+Sensitivty mean:  3.856655e-08
+Sensitivty standard deviation:  2.849684e-07
+
+
+Bag number:  7
+Sensitivty mean:  1.276032e-06
+Sensitivty standard deviation:  9.6188405e-06
+
+
+Bag number:  8
+Sensitivty mean:  4.4749482e-05
+Sensitivty standard deviation:  0.0002727261
+
+
+Bag number:  9
+Sensitivty mean:  0.0001452441
+Sensitivty standard deviation:  0.00082718977
+
+
+Bag number:  10
+Sensitivty mean:  6.2889067e-06
+Sensitivty standard deviation:  3.7288733e-05
+
+
+Bag number:  11
+Sensitivty mean:  4.673721e-09
+Sensitivty standard deviation:  2.995361e-08
+
+
+Bag number:  12
+Sensitivty mean:  3.9122355e-07
+Sensitivty standard deviation:  2.6892794e-06
+
+
+Bag number:  13
+Sensitivty mean:  4.9202208e-05
+Sensitivty standard deviation:  0.00034164957
+
+
+Bag number:  14
+Sensitivty mean:  0.00012564663
+Sensitivty standard deviation:  0.0008188169
+
+
+Bag number:  15
+Sensitivty mean:  5.8825266e-05
+Sensitivty standard deviation:  0.00034321295
+
+
+Bag number:  16
+Sensitivty mean:  7.5869334e-06
+Sensitivty standard deviation:  3.597009e-05
+
+
+Bag number:  17
+Sensitivty mean:  7.3375136e-06
+Sensitivty standard deviation:  5.0995255e-05
+
+
+Bag number:  18
+Sensitivty mean:  5.268443e-07
+Sensitivty standard deviation:  2.7509195e-06
+
+
+Bag number:  19
+Sensitivty mean:  3.4447933e-07
+Sensitivty standard deviation:  1.991227e-06
+
+
+Bag number:  20
+Sensitivty mean:  3.193723e-08
+Sensitivty standard deviation:  2.787195e-07
+
+
+Bag number:  21
+Sensitivty mean:  5.7825753e-05
+Sensitivty standard deviation:  0.00036479146
+
+
+Bag number:  22
+Sensitivty mean:  1.1385065e-08
+Sensitivty standard deviation:  9.469591e-08
+
+
+Bag number:  23
+Sensitivty mean:  7.602531e-05
+Sensitivty standard deviation:  0.00046951795
+
+
+Bag number:  24
+Sensitivty mean:  4.6068162e-05
+Sensitivty standard deviation:  0.0002728691
+
+
+Bag number:  25
+Sensitivty mean:  1.5367566e-06
+Sensitivty standard deviation:  8.300009e-06
+
+
+Bag number:  26
+Sensitivty mean:  1.7880597e-05
+Sensitivty standard deviation:  0.0001196947
+
+
+Bag number:  27
+Sensitivty mean:  9.665457e-10
+Sensitivty standard deviation:  6.6832944e-09
+
+
+Bag number:  28
+Sensitivty mean:  1.3290829e-05
+Sensitivty standard deviation:  7.6721524e-05
+
+
+Bag number:  29
+Sensitivty mean:  7.57033e-06
+Sensitivty standard deviation:  5.301823e-05
+
+
+Bag number:  30
+Sensitivty mean:  8.6632866e-08
+Sensitivty standard deviation:  6.4578967e-07
+
+
+Bag number:  31
+Sensitivty mean:  6.727415e-05
+Sensitivty standard deviation:  0.00045988432
+
+
+Bag number:  32
+Sensitivty mean:  8.974514e-06
+Sensitivty standard deviation:  6.557314e-05
+
+
+Bag number:  33
+Sensitivty mean:  5.4425964e-05
+Sensitivty standard deviation:  0.00033743453
+
+
+Bag number:  34
+Sensitivty mean:  1.5940877e-08
+Sensitivty standard deviation:  1.04064576e-07
+
+
+Bag number:  35
+Sensitivty mean:  2.9966543e-05
+Sensitivty standard deviation:  0.00018829106
+
+
+Bag number:  36
+Sensitivty mean:  1.8396479e-06
+Sensitivty standard deviation:  1.0932693e-05
+
+
+Bag number:  37
+Sensitivty mean:  2.6805868e-05
+Sensitivty standard deviation:  0.0001607555
+
+
+Bag number:  38
+Sensitivty mean:  3.2275384e-05
+Sensitivty standard deviation:  0.00022355889
+
+
+Bag number:  39
+Sensitivty mean:  1.924719e-09
+Sensitivty standard deviation:  8.779891e-09
+
+

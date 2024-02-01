@@ -14,9 +14,13 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import numpy as np
 
-def explain(bag, label, model, plot, dataset, outfolder=None, filename=None):
+def explain(bag, label, model, plot, dataset, pooling_type, outfolder=None, filename=None):
     bag.requires_grad_(True)
-    res, a = model(bag)
+
+    if pooling_type == "attention" or pooling_type == "gated_attention":
+        res, a = model(bag)
+    else:
+        res = model(bag)
     res.backward()
     sensitivty = bag.grad**2
     
@@ -43,56 +47,26 @@ def explain(bag, label, model, plot, dataset, outfolder=None, filename=None):
             for i in range(num_images, num_rows * num_columns):
                 subfigs[0].delaxes(axes_1.flatten()[i])
 
-            axes_2 = subfigs[1].subplots(num_rows, num_columns)
-            axes_2 = axes_2.reshape(num_rows, num_columns)
-            subfigs[1].suptitle(f'Attention weights - label: {label.item()} - Number of instances: {num_images}', fontsize = 35)
-            max_idx = torch.argmax(a).item()
-            for i, image in enumerate(bag.cpu().detach().numpy()):
+            if pooling_type == "attention" or pooling_type == "gated_attention":
+                axes_2 = subfigs[1].subplots(num_rows, num_columns)
+                axes_2 = axes_2.reshape(num_rows, num_columns)
+                subfigs[1].suptitle(f'Attention weights - label: {label.item()} - Number of instances: {num_images}', fontsize = 35)
+                max_idx = torch.argmax(a).item()
+                for i, image in enumerate(bag.cpu().detach().numpy()):
 
-                ax = axes_2[i // num_columns, i % num_columns]
-                ax.imshow(image.reshape(28,28), cmap='grey')
-                ax.text(0.5, -0.15, fr'$a_{i}$ = {a[i].item():.2f}', fontsize=25, ha="center", transform=ax.transAxes)
-                ax.axis('off')
-                if i == max_idx and label == 1:
+                    ax = axes_2[i // num_columns, i % num_columns]
+                    ax.imshow(image.reshape(28,28), cmap='grey')
+                    ax.text(0.5, -0.15, fr'$a_{i}$ = {a[i].item():.2f}', fontsize=25, ha="center", transform=ax.transAxes)
+                    ax.axis('off')
+                    if i == max_idx and label == 1:
 
-                    rect = patches.Rectangle((0, 0),
-                                            27, 27,
-                                            linewidth=10, edgecolor='red', facecolor='none', fill=False, zorder=20)
-                    ax.add_patch(rect)
+                        rect = patches.Rectangle((0, 0),
+                                                27, 27,
+                                                linewidth=10, edgecolor='red', facecolor='none', fill=False, zorder=20)
+                        ax.add_patch(rect)
 
-            for i in range(num_images, num_rows * num_columns):
-                subfigs[1].delaxes(axes_2.flatten()[i])
-
-        # TODO @augustin adjust the histopatholgy explain method and do the mapping
-        elif dataset == "Histopathology":
-
-            num_images = bag.size()[0]
-            num_columns = 5 
-            num_rows = math.ceil(num_images  / num_columns)
-            fig, axes = plt.subplots(num_rows, num_columns, figsize=(20, 2 * num_rows))
-            axes = axes.reshape(num_rows, num_columns)
-            fig.suptitle(f'Label: {label} - Number of instances: {num_images}', fontsize = 35)
-
-            # this should be the bag of images
-            mapped_bags = None
-
-            for i, image in enumerate(mapped_bags):
-
-                ax = axes_2[i // num_columns, i % num_columns]
-                # adjust cmap to the correct one depening on thehistopatholgy inage
-                ax.imshow(image.reshape(28,28), cmap="-")
-                ax.text(0.5, -0.15, fr'$a_{i}$ = {a[i].item():.2f}', fontsize=25, ha="center", transform=ax.transAxes)
-                ax.axis('off')
-                
-                if i == max_idx and label == 1:
-                    # adjust the size of the patch depening on the size of the histopatholgy inage
-                    rect = patches.Rectangle((0, 0),
-                                            27, 27,
-                                            linewidth=10, edgecolor='red', facecolor='none', fill=False, zorder=20)
-                    ax.add_patch(rect)
-
-            for i in range(num_images, num_rows * num_columns):
-                subfigs[1].delaxes(axes_2.flatten()[i])
+                for i in range(num_images, num_rows * num_columns):
+                    subfigs[1].delaxes(axes_2.flatten()[i])
 
 
         else:
@@ -104,8 +78,9 @@ def explain(bag, label, model, plot, dataset, outfolder=None, filename=None):
             figure = plt.gcf()  # get current figure
             figure.set_size_inches(32, 18)
             plt.savefig(os.path.join(outfolder, filename))
+            plt.close()
 
-    return sensitivty
+    return sensitivty.cpu().numpy()
 
 
 def main():

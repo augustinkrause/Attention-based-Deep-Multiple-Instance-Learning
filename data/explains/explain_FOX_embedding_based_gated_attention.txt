@@ -1,0 +1,202 @@
+Dataset: FOX, MIL Type: embedding_based, Pooling Type: gated_attention
+
+Bag number:  0
+Sensitivty mean:  2.5794905e-06
+Sensitivty standard deviation:  6.0452935e-06
+
+
+Bag number:  1
+Sensitivty mean:  4.030179e-05
+Sensitivty standard deviation:  0.00012012027
+
+
+Bag number:  2
+Sensitivty mean:  4.2022376e-07
+Sensitivty standard deviation:  4.1134595e-06
+
+
+Bag number:  3
+Sensitivty mean:  6.0929295e-08
+Sensitivty standard deviation:  2.1905794e-07
+
+
+Bag number:  4
+Sensitivty mean:  4.167489e-05
+Sensitivty standard deviation:  0.0001586958
+
+
+Bag number:  5
+Sensitivty mean:  7.309727e-05
+Sensitivty standard deviation:  0.00032705395
+
+
+Bag number:  6
+Sensitivty mean:  3.639017e-05
+Sensitivty standard deviation:  0.00018212946
+
+
+Bag number:  7
+Sensitivty mean:  1.3824197e-09
+Sensitivty standard deviation:  9.053095e-09
+
+
+Bag number:  8
+Sensitivty mean:  1.6984241e-06
+Sensitivty standard deviation:  3.2540963e-06
+
+
+Bag number:  9
+Sensitivty mean:  4.162026e-06
+Sensitivty standard deviation:  1.2668706e-05
+
+
+Bag number:  10
+Sensitivty mean:  6.365409e-05
+Sensitivty standard deviation:  0.00028282715
+
+
+Bag number:  11
+Sensitivty mean:  1.0212567e-06
+Sensitivty standard deviation:  2.8436468e-06
+
+
+Bag number:  12
+Sensitivty mean:  6.797629e-07
+Sensitivty standard deviation:  3.0602605e-06
+
+
+Bag number:  13
+Sensitivty mean:  2.4122015e-05
+Sensitivty standard deviation:  7.545622e-05
+
+
+Bag number:  14
+Sensitivty mean:  4.1828025e-05
+Sensitivty standard deviation:  0.00020182032
+
+
+Bag number:  15
+Sensitivty mean:  4.1705703e-06
+Sensitivty standard deviation:  1.8012131e-05
+
+
+Bag number:  16
+Sensitivty mean:  3.0626214e-07
+Sensitivty standard deviation:  2.43214e-06
+
+
+Bag number:  17
+Sensitivty mean:  7.8752455e-05
+Sensitivty standard deviation:  0.0003032031
+
+
+Bag number:  18
+Sensitivty mean:  1.15578905e-05
+Sensitivty standard deviation:  0.00010221473
+
+
+Bag number:  19
+Sensitivty mean:  0.00014499709
+Sensitivty standard deviation:  0.0003178525
+
+
+Bag number:  20
+Sensitivty mean:  2.4041126e-05
+Sensitivty standard deviation:  0.00011341188
+
+
+Bag number:  21
+Sensitivty mean:  3.974633e-06
+Sensitivty standard deviation:  1.0498823e-05
+
+
+Bag number:  22
+Sensitivty mean:  2.435199e-07
+Sensitivty standard deviation:  8.8190893e-07
+
+
+Bag number:  23
+Sensitivty mean:  3.4342487e-05
+Sensitivty standard deviation:  0.0001050909
+
+
+Bag number:  24
+Sensitivty mean:  2.7899032e-05
+Sensitivty standard deviation:  0.00010594262
+
+
+Bag number:  25
+Sensitivty mean:  6.950558e-05
+Sensitivty standard deviation:  0.00035043783
+
+
+Bag number:  26
+Sensitivty mean:  9.708687e-06
+Sensitivty standard deviation:  5.8064288e-05
+
+
+Bag number:  27
+Sensitivty mean:  4.9774335e-06
+Sensitivty standard deviation:  3.3384014e-05
+
+
+Bag number:  28
+Sensitivty mean:  1.640705e-05
+Sensitivty standard deviation:  5.5348053e-05
+
+
+Bag number:  29
+Sensitivty mean:  4.3116794e-05
+Sensitivty standard deviation:  0.00013206968
+
+
+Bag number:  30
+Sensitivty mean:  1.26775845e-14
+Sensitivty standard deviation:  6.615915e-14
+
+
+Bag number:  31
+Sensitivty mean:  6.1263336e-06
+Sensitivty standard deviation:  1.7579661e-05
+
+
+Bag number:  32
+Sensitivty mean:  5.0439394e-05
+Sensitivty standard deviation:  0.00023080524
+
+
+Bag number:  33
+Sensitivty mean:  2.5076482e-05
+Sensitivty standard deviation:  0.000100722435
+
+
+Bag number:  34
+Sensitivty mean:  1.6226927e-07
+Sensitivty standard deviation:  1.2532332e-06
+
+
+Bag number:  35
+Sensitivty mean:  6.5876106e-06
+Sensitivty standard deviation:  2.0593065e-05
+
+
+Bag number:  36
+Sensitivty mean:  9.999714e-06
+Sensitivty standard deviation:  2.6802685e-05
+
+
+Bag number:  37
+Sensitivty mean:  6.450266e-07
+Sensitivty standard deviation:  1.5955172e-06
+
+
+Bag number:  38
+Sensitivty mean:  3.583793e-05
+Sensitivty standard deviation:  0.00010852099
+
+
+Bag number:  39
+Sensitivty mean:  7.243989e-05
+Sensitivty standard deviation:  0.00023981919
+
+

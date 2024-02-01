@@ -1,0 +1,97 @@
+Dataset: MUSK1, MIL Type: embedding_based, Pooling Type: attention
+
+Bag number:  0
+Sensitivty mean:  6.4887216e-05
+Sensitivty standard deviation:  0.00019947745
+
+
+Bag number:  1
+Sensitivty mean:  6.578976e-05
+Sensitivty standard deviation:  0.00015926051
+
+
+Bag number:  2
+Sensitivty mean:  1.1839127e-09
+Sensitivty standard deviation:  2.8125187e-09
+
+
+Bag number:  3
+Sensitivty mean:  2.485909e-09
+Sensitivty standard deviation:  1.2266876e-08
+
+
+Bag number:  4
+Sensitivty mean:  1.7086181e-09
+Sensitivty standard deviation:  3.747624e-09
+
+
+Bag number:  5
+Sensitivty mean:  5.4291177e-12
+Sensitivty standard deviation:  1.0477977e-11
+
+
+Bag number:  6
+Sensitivty mean:  6.082016e-07
+Sensitivty standard deviation:  1.4842223e-06
+
+
+Bag number:  7
+Sensitivty mean:  1.8094657e-07
+Sensitivty standard deviation:  5.1685265e-07
+
+
+Bag number:  8
+Sensitivty mean:  7.215272e-08
+Sensitivty standard deviation:  1.5028306e-07
+
+
+Bag number:  9
+Sensitivty mean:  2.0832474e-07
+Sensitivty standard deviation:  3.8976168e-07
+
+
+Bag number:  10
+Sensitivty mean:  0.00071957154
+Sensitivty standard deviation:  0.0025550593
+
+
+Bag number:  11
+Sensitivty mean:  0.0015929617
+Sensitivty standard deviation:  0.0027175313
+
+
+Bag number:  12
+Sensitivty mean:  4.2672277e-06
+Sensitivty standard deviation:  6.9816797e-06
+
+
+Bag number:  13
+Sensitivty mean:  0.0005818936
+Sensitivty standard deviation:  0.002355291
+
+
+Bag number:  14
+Sensitivty mean:  9.910495e-06
+Sensitivty standard deviation:  4.163218e-05
+
+
+Bag number:  15
+Sensitivty mean:  5.340968e-10
+Sensitivty standard deviation:  8.81393e-10
+
+
+Bag number:  16
+Sensitivty mean:  2.215959e-09
+Sensitivty standard deviation:  4.2819157e-09
+
+
+Bag number:  17
+Sensitivty mean:  0.00043894665
+Sensitivty standard deviation:  0.0013253676
+
+
+Bag number:  18
+Sensitivty mean:  3.7188426e-11
+Sensitivty standard deviation:  2.1762975e-10
+
+
