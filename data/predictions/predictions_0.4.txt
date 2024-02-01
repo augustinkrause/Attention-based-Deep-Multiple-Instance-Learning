@@ -6,9 +6,9 @@ True Negative average Confidence: 0.71
 True Positives average Confidence: 0.61
 
 Confidence predictions
-Confidence 0.5789473684210527
+Confidence Ratio 0.6842105263157895
 Positive Confidence Accuracy 1.0
-Negative Confidence Accuracy 0.125
+Negative Confidence Accuracy 0.16666666666666666
 
 
 Dataset: MUSK1, MIL Type: embedding_based, Pooling Type: mean
@@ -19,7 +19,7 @@ True Negative average Confidence: 0.87
 True Positives average Confidence: 0.96
 
 Confidence predictions
-Confidence 0.9473684210526315
+Confidence Ratio 0.9473684210526315
 Positive Confidence Accuracy 0.7777777777777778
 Negative Confidence Accuracy 0.0
 
@@ -32,9 +32,9 @@ True Negative average Confidence: 0.89
 True Positives average Confidence: 0.92
 
 Confidence predictions
-Confidence 0.7894736842105263
+Confidence Ratio 0.8421052631578947
 Positive Confidence Accuracy 1.0
-Negative Confidence Accuracy 0.75
+Negative Confidence Accuracy 1.0
 
 
 Dataset: MUSK1, MIL Type: embedding_based, Pooling Type: gated_attention
@@ -45,7 +45,7 @@ True Negative average Confidence: 0.52
 True Positives average Confidence: 0.13
 
 Confidence predictions
-Confidence 0.42105263157894735
+Confidence Ratio 0.42105263157894735
 Positive Confidence Accuracy 0.125
 Negative Confidence Accuracy 0.2727272727272727
 
@@ -58,7 +58,7 @@ True Negative average Confidence: 1.0
 True Positives average Confidence: 0.89
 
 Confidence predictions
-Confidence 0.8947368421052632
+Confidence Ratio 0.8947368421052632
 Positive Confidence Accuracy 0.7647058823529411
 Negative Confidence Accuracy 0.5
 
@@ -71,9 +71,9 @@ True Negative average Confidence: 0.94
 True Positives average Confidence: 0.71
 
 Confidence predictions
-Confidence 0.7368421052631579
-Positive Confidence Accuracy 1.0
-Negative Confidence Accuracy 0.4
+Confidence Ratio 0.7894736842105263
+Positive Confidence Accuracy 0.9333333333333333
+Negative Confidence Accuracy 0.25
 
 
 Dataset: MUSK2, MIL Type: embedding_based, Pooling Type: max
@@ -84,7 +84,7 @@ True Negative average Confidence: 0.83
 True Positives average Confidence: 0.51
 
 Confidence predictions
-Confidence 0.7619047619047619
+Confidence Ratio 0.7619047619047619
 Positive Confidence Accuracy 0.8125
 Negative Confidence Accuracy 0.2
 
@@ -97,9 +97,9 @@ True Negative average Confidence: 0.96
 True Positives average Confidence: 0.85
 
 Confidence predictions
-Confidence 0.9523809523809523
-Positive Confidence Accuracy 0.75
-Negative Confidence Accuracy 0.0
+Confidence Ratio 1.0
+Positive Confidence Accuracy 0.7619047619047619
+No Negative Confidence
 
 
 Dataset: MUSK2, MIL Type: embedding_based, Pooling Type: attention
@@ -110,7 +110,7 @@ True Negative average Confidence: 1.0
 True Positives average Confidence: 0.99
 
 Confidence predictions
-Confidence 1.0
+Confidence Ratio 1.0
 Positive Confidence Accuracy 0.7619047619047619
 No Negative Confidence
 
@@ -123,7 +123,7 @@ True Negative average Confidence: 0.96
 True Positives average Confidence: 0.94
 
 Confidence predictions
-Confidence 1.0
+Confidence Ratio 1.0
 Positive Confidence Accuracy 0.8571428571428571
 No Negative Confidence
 
@@ -136,7 +136,7 @@ True Negative average Confidence: 0.98
 True Positives average Confidence: 0.86
 
 Confidence predictions
-Confidence 0.9523809523809523
+Confidence Ratio 0.9523809523809523
 Positive Confidence Accuracy 0.7
 Negative Confidence Accuracy 1.0
 
@@ -149,9 +149,9 @@ True Negative average Confidence: 0.76
 True Positives average Confidence: 0.75
 
 Confidence predictions
-Confidence 0.7619047619047619
-Positive Confidence Accuracy 1.0
-Negative Confidence Accuracy 0.4
+Confidence Ratio 0.8095238095238095
+Positive Confidence Accuracy 0.9411764705882353
+Negative Confidence Accuracy 0.25
 
 
 Dataset: ELEPHANT, MIL Type: embedding_based, Pooling Type: max
@@ -162,9 +162,9 @@ True Negative average Confidence: 0.68
 True Positives average Confidence: 0.76
 
 Confidence predictions
-Confidence 0.775
+Confidence Ratio 0.8
 Positive Confidence Accuracy 1.0
-Negative Confidence Accuracy 0.1111111111111111
+Negative Confidence Accuracy 0.125
 
 
 Dataset: ELEPHANT, MIL Type: embedding_based, Pooling Type: mean
@@ -175,9 +175,9 @@ True Negative average Confidence: 0.8
 True Positives average Confidence: 0.81
 
 Confidence predictions
-Confidence 0.8
-Positive Confidence Accuracy 1.0
-Negative Confidence Accuracy 0.5
+Confidence Ratio 0.9
+Positive Confidence Accuracy 0.9722222222222222
+Negative Confidence Accuracy 0.75
 
 
 Dataset: ELEPHANT, MIL Type: embedding_based, Pooling Type: attention
@@ -188,9 +188,9 @@ True Negative average Confidence: 0.81
 True Positives average Confidence: 0.87
 
 Confidence predictions
-Confidence 0.875
-Positive Confidence Accuracy 1.0
-Negative Confidence Accuracy 0.2
+Confidence Ratio 0.925
+Positive Confidence Accuracy 0.972972972972973
+Negative Confidence Accuracy 0.0
 
 
 Dataset: ELEPHANT, MIL Type: embedding_based, Pooling Type: gated_attention
@@ -201,9 +201,9 @@ True Negative average Confidence: 0.88
 True Positives average Confidence: 0.88
 
 Confidence predictions
-Confidence 0.9
-Positive Confidence Accuracy 0.9722222222222222
-Negative Confidence Accuracy 0.5
+Confidence Ratio 0.925
+Positive Confidence Accuracy 0.972972972972973
+Negative Confidence Accuracy 0.6666666666666666
 
 
 Dataset: ELEPHANT, MIL Type: instance_based, Pooling Type: max
@@ -214,8 +214,8 @@ True Negative average Confidence: 0.98
 True Positives average Confidence: 0.97
 
 Confidence predictions
-Confidence 0.95
-Positive Confidence Accuracy 0.8947368421052632
+Confidence Ratio 0.975
+Positive Confidence Accuracy 0.8717948717948718
 Negative Confidence Accuracy 1.0
 
 
@@ -227,9 +227,9 @@ True Negative average Confidence: 0.73
 True Positives average Confidence: 0.83
 
 Confidence predictions
-Confidence 0.8
+Confidence Ratio 0.85
 Positive Confidence Accuracy 1.0
-Negative Confidence Accuracy 0.25
+Negative Confidence Accuracy 0.3333333333333333
 
 
 Dataset: TIGER, MIL Type: embedding_based, Pooling Type: max
@@ -240,7 +240,7 @@ True Negative average Confidence: 1.0
 True Positives average Confidence: 0.91
 
 Confidence predictions
-Confidence 0.95
+Confidence Ratio 0.95
 Positive Confidence Accuracy 0.7631578947368421
 Negative Confidence Accuracy 0.5
 
@@ -253,7 +253,7 @@ True Negative average Confidence: 0.88
 True Positives average Confidence: 0.98
 
 Confidence predictions
-Confidence 0.95
+Confidence Ratio 0.95
 Positive Confidence Accuracy 0.8421052631578947
 Negative Confidence Accuracy 0.5
 
@@ -266,7 +266,7 @@ True Negative average Confidence: 0.97
 True Positives average Confidence: 0.94
 
 Confidence predictions
-Confidence 0.95
+Confidence Ratio 0.95
 Positive Confidence Accuracy 0.8157894736842105
 Negative Confidence Accuracy 0.5
 
@@ -279,9 +279,9 @@ True Negative average Confidence: 0.66
 True Positives average Confidence: 0.76
 
 Confidence predictions
-Confidence 0.725
-Positive Confidence Accuracy 0.8620689655172413
-Negative Confidence Accuracy 0.2727272727272727
+Confidence Ratio 0.8
+Positive Confidence Accuracy 0.875
+Negative Confidence Accuracy 0.375
 
 
 Dataset: TIGER, MIL Type: instance_based, Pooling Type: max
@@ -292,9 +292,9 @@ True Negative average Confidence: 0.6
 True Positives average Confidence: 0.74
 
 Confidence predictions
-Confidence 0.75
-Positive Confidence Accuracy 0.8666666666666667
-Negative Confidence Accuracy 0.3
+Confidence Ratio 0.8
+Positive Confidence Accuracy 0.84375
+Negative Confidence Accuracy 0.25
 
 
 Dataset: TIGER, MIL Type: instance_based, Pooling Type: mean
@@ -305,9 +305,9 @@ True Negative average Confidence: 0.55
 True Positives average Confidence: 0.6
 
 Confidence predictions
-Confidence 0.625
-Positive Confidence Accuracy 0.84
-Negative Confidence Accuracy 0.26666666666666666
+Confidence Ratio 0.7
+Positive Confidence Accuracy 0.8214285714285714
+Negative Confidence Accuracy 0.25
 
 
 Dataset: FOX, MIL Type: embedding_based, Pooling Type: max
@@ -318,9 +318,9 @@ True Negative average Confidence: 0.89
 True Positives average Confidence: 0.97
 
 Confidence predictions
-Confidence 0.9
-Positive Confidence Accuracy 0.5833333333333334
-Negative Confidence Accuracy 0.75
+Confidence Ratio 0.925
+Positive Confidence Accuracy 0.5675675675675675
+Negative Confidence Accuracy 0.6666666666666666
 
 
 Dataset: FOX, MIL Type: embedding_based, Pooling Type: mean
@@ -331,9 +331,9 @@ True Negative average Confidence: 0.41
 True Positives average Confidence: 0.39
 
 Confidence predictions
-Confidence 0.325
-Positive Confidence Accuracy 0.6153846153846154
-Negative Confidence Accuracy 0.37037037037037035
+Confidence Ratio 0.425
+Positive Confidence Accuracy 0.7058823529411765
+Negative Confidence Accuracy 0.43478260869565216
 
 
 Dataset: FOX, MIL Type: embedding_based, Pooling Type: attention
@@ -344,8 +344,8 @@ True Negative average Confidence: 0.95
 True Positives average Confidence: 0.99
 
 Confidence predictions
-Confidence 0.95
-Positive Confidence Accuracy 0.6052631578947368
+Confidence Ratio 0.975
+Positive Confidence Accuracy 0.5897435897435898
 Negative Confidence Accuracy 1.0
 
 
@@ -357,9 +357,9 @@ True Negative average Confidence: 0.39
 True Positives average Confidence: 0.53
 
 Confidence predictions
-Confidence 0.45
-Positive Confidence Accuracy 0.6666666666666666
-Negative Confidence Accuracy 0.45454545454545453
+Confidence Ratio 0.55
+Positive Confidence Accuracy 0.6818181818181818
+Negative Confidence Accuracy 0.5
 
 
 Dataset: FOX, MIL Type: instance_based, Pooling Type: max
@@ -370,7 +370,7 @@ True Negative average Confidence: 0.89
 True Positives average Confidence: 0.94
 
 Confidence predictions
-Confidence 0.95
+Confidence Ratio 0.95
 Positive Confidence Accuracy 0.6052631578947368
 Negative Confidence Accuracy 0.5
 
@@ -383,33 +383,33 @@ True Negative average Confidence: 0.33
 True Positives average Confidence: 0.32
 
 Confidence predictions
-Confidence 0.225
-Positive Confidence Accuracy 0.6666666666666666
-Negative Confidence Accuracy 0.3225806451612903
+Confidence Ratio 0.35
+Positive Confidence Accuracy 0.6428571428571429
+Negative Confidence Accuracy 0.3076923076923077
 
 
 Dataset: MNIST, MIL Type: embedding_based, Pooling Type: max
-Average Confidence: 1.0
-False Negative average Confidence: 1.0
-False Positive average Confidence: 1.0
-True Negative average Confidence: 1.0
-True Positives average Confidence: 1.0
+Average Confidence: 0.99
+False Negative average Confidence: 0.86
+No False Positives
+True Negative average Confidence: 0.99
+True Positives average Confidence: 0.99
 
 Confidence predictions
-Confidence 1.0
-Positive Confidence Accuracy 0.97
-No Negative Confidence
+Confidence Ratio 0.995
+Positive Confidence Accuracy 0.9748743718592965
+Negative Confidence Accuracy 0.0
 
 
 Dataset: MNIST, MIL Type: embedding_based, Pooling Type: mean
 Average Confidence: 1.0
-False Negative average Confidence: 1.0
-False Positive average Confidence: 1.0
+False Negative average Confidence: 0.98
+False Positive average Confidence: 0.87
 True Negative average Confidence: 1.0
 True Positives average Confidence: 1.0
 
 Confidence predictions
-Confidence 1.0
+Confidence Ratio 1.0
 Positive Confidence Accuracy 0.945
 No Negative Confidence
 
@@ -422,47 +422,125 @@ True Negative average Confidence: 1.0
 True Positives average Confidence: 1.0
 
 Confidence predictions
-Confidence 1.0
+Confidence Ratio 1.0
 Positive Confidence Accuracy 0.975
 No Negative Confidence
 
 
 Dataset: MNIST, MIL Type: embedding_based, Pooling Type: gated_attention
 Average Confidence: 1.0
-False Negative average Confidence: 1.0
+False Negative average Confidence: 0.91
 No False Positives
 True Negative average Confidence: 1.0
 True Positives average Confidence: 1.0
 
 Confidence predictions
-Confidence 1.0
-Positive Confidence Accuracy 0.985
+Confidence Ratio 1.0
+Positive Confidence Accuracy 0.98
 No Negative Confidence
 
 
 Dataset: MNIST, MIL Type: instance_based, Pooling Type: max
 Average Confidence: 1.0
-False Negative average Confidence: 1.0
+False Negative average Confidence: 0.93
 No False Positives
 True Negative average Confidence: 1.0
 True Positives average Confidence: 1.0
 
 Confidence predictions
-Confidence 1.0
-Positive Confidence Accuracy 0.935
+Confidence Ratio 1.0
+Positive Confidence Accuracy 0.965
 No Negative Confidence
 
 
 Dataset: MNIST, MIL Type: instance_based, Pooling Type: mean
-Average Confidence: 0.17
-False Negative average Confidence: 0.08
-False Positive average Confidence: 0.16
+Average Confidence: 0.11
+False Negative average Confidence: 0.07
+False Positive average Confidence: 0.08
 True Negative average Confidence: 0.13
-True Positives average Confidence: 0.22
+True Positives average Confidence: 0.12
 
 Confidence predictions
-Confidence 0.02
-Positive Confidence Accuracy 0.75
-Negative Confidence Accuracy 0.35714285714285715
+Confidence Ratio 0.0
+No Positive Confidence
+Negative Confidence Accuracy 0.29
+
+
+Dataset: TCGA, MIL Type: embedding_based, Pooling Type: max
+Average Confidence: 0.08
+No False Negatives
+False Positive average Confidence: 0.08
+No True Negatives
+True Positives average Confidence: 0.09
+
+Confidence predictions
+Confidence Ratio 0.0
+No Positive Confidence
+Negative Confidence Accuracy 0.3888888888888889
+
+
+Dataset: TCGA, MIL Type: embedding_based, Pooling Type: mean
+Average Confidence: 0.45
+False Negative average Confidence: 0.28
+False Positive average Confidence: 0.26
+True Negative average Confidence: 0.71
+True Positives average Confidence: 0.44
+
+Confidence predictions
+Confidence Ratio 0.5222222222222223
+Positive Confidence Accuracy 0.8085106382978723
+Negative Confidence Accuracy 0.5116279069767442
+
+
+Dataset: TCGA, MIL Type: embedding_based, Pooling Type: attention
+Average Confidence: 0.41
+False Negative average Confidence: 0.31
+False Positive average Confidence: 0.2
+True Negative average Confidence: 0.51
+True Positives average Confidence: 0.43
+
+Confidence predictions
+Confidence Ratio 0.4444444444444444
+Positive Confidence Accuracy 0.825
+Negative Confidence Accuracy 0.36
+
+
+Dataset: TCGA, MIL Type: embedding_based, Pooling Type: gated_attention
+Average Confidence: 0.43
+False Negative average Confidence: 0.28
+False Positive average Confidence: 0.24
+True Negative average Confidence: 0.62
+True Positives average Confidence: 0.44
+
+Confidence predictions
+Confidence Ratio 0.43333333333333335
+Positive Confidence Accuracy 0.8717948717948718
+Negative Confidence Accuracy 0.43137254901960786
+
+
+Dataset: TCGA, MIL Type: instance_based, Pooling Type: max
+Average Confidence: 0.05
+No False Negatives
+False Positive average Confidence: 0.05
+No True Negatives
+True Positives average Confidence: 0.05
+
+Confidence predictions
+Confidence Ratio 0.0
+No Positive Confidence
+Negative Confidence Accuracy 0.3888888888888889
+
+
+Dataset: TCGA, MIL Type: instance_based, Pooling Type: mean
+Average Confidence: 0.32
+False Negative average Confidence: 0.18
+False Positive average Confidence: 0.25
+True Negative average Confidence: 0.35
+True Positives average Confidence: 0.38
+
+Confidence predictions
+Confidence Ratio 0.3333333333333333
+Positive Confidence Accuracy 0.8
+Negative Confidence Accuracy 0.31666666666666665
 
 
