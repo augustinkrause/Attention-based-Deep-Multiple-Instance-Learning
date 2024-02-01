@@ -20,7 +20,7 @@ def get_bag(bag_path : str):
     return bag
 
 class TCGADataset(Dataset):
-    def __init__(self, n_train=None, n_test=None, n_bags=None, train = True, transformation=None, seed=0):
+    def __init__(self, n_train=None, n_test=None, n_bags=None, train = True, transformation=None, seed=1):
         
         self.transformation = transformation
         self.seed = seed
