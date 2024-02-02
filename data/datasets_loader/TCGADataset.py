@@ -61,8 +61,7 @@ class TCGADataset(Dataset):
                     ds = f.create_dataset(self.metadata.iloc[i]["slide_id"], (1, n_patches, 768), maxshape=(1, None, 768))
                     ds[0] = get_bag(self.slide_paths[self.metadata.iloc[i]["slide_id"]])
         except Exception as e:
-            print(f"e:{e}")
-            print(f"Dataset {os.path.join(TMP_PATH, f'TCGA_PML_{TASK_ID}.h5')} already exists.")
+            pass
 
     def __len__(self):
         if self.train:
