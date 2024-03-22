@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from data.datasets_loader.CLIMLIDataset import CL1MLIDataset
 from data.datasets_loader.MNISTBagsDataset import MNISTBagDataset
+from data.datasets_loader.TCGADataset import TCGADataset
 import argparse
 import math
 import os
@@ -32,6 +33,9 @@ def load_data(dataset, transformation=None, n_train=None, n_test=None):
     elif dataset == "MNIST":
         dataloader_train = MNISTBagDataset(transformation, n_train, n_test, train = True)
         dataloader_test = MNISTBagDataset(transformation, n_train, n_test, train = False)
+    elif dataset == "TCGA":
+        dataloader_train = TCGADataset(n_train, n_test, train = True, transformation=transformation)
+        dataloader_test = TCGADataset(n_train, n_test, train = False, transformation=transformation)
     
     else: raise ValueError('Dataset it not supported')
     

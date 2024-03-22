@@ -8,7 +8,7 @@ from data.data_utils.transformations import get_transformation
 def setup_model_training(args):
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    if args.dataset in ["MUSK1", "MUSK2", "ELEPHANT", "TIGER", "FOX"]:
+    if args.dataset in ["MUSK1", "MUSK2", "ELEPHANT", "TIGER", "FOX", "TCGA"]:
         model = MILModel(args.dataset, args.mil_type, args.pooling_type)
         optimizer = optim.SGD(model.parameters(), 
                               lr=args.learning_rate, 
@@ -42,7 +42,7 @@ def setup_model_training_cv(dataset, dict_params):
     beta_2 = dict_params.get('beta_2', None)
     optimizer_name = dict_params['optimizer']
 
-    if dataset in ["MUSK1", "MUSK2", "ELEPHANT", "TIGER", "FOX"]:
+    if dataset in ["MUSK1", "MUSK2", "ELEPHANT", "TIGER", "FOX", "TCGA"]:
         model = MILModel(dataset, mil_type, pooling_type)
         
     elif dataset == "MNIST":

@@ -1,0 +1,107 @@
+Dataset: MUSK2, MIL Type: embedding_based, Pooling Type: gated_attention
+
+Bag number:  0
+Sensitivty mean:  2.06616e-39
+Sensitivty standard deviation:  0.0
+
+
+Bag number:  1
+Sensitivty mean:  1.8994063e-10
+Sensitivty standard deviation:  3.0085667e-10
+
+
+Bag number:  2
+Sensitivty mean:  3.9379064e-08
+Sensitivty standard deviation:  1.0238051e-07
+
+
+Bag number:  3
+Sensitivty mean:  6.262055e-14
+Sensitivty standard deviation:  1.4113526e-13
+
+
+Bag number:  4
+Sensitivty mean:  4.581803e-16
+Sensitivty standard deviation:  1.1089017e-15
+
+
+Bag number:  5
+Sensitivty mean:  0.006262159
+Sensitivty standard deviation:  0.017938416
+
+
+Bag number:  6
+Sensitivty mean:  4.4572637e-10
+Sensitivty standard deviation:  3.1403056e-09
+
+
+Bag number:  7
+Sensitivty mean:  8.1670917e-13
+Sensitivty standard deviation:  2.6206565e-12
+
+
+Bag number:  8
+Sensitivty mean:  5.3127656e-15
+Sensitivty standard deviation:  6.311962e-15
+
+
+Bag number:  9
+Sensitivty mean:  4.3960694e-12
+Sensitivty standard deviation:  1.1467122e-11
+
+
+Bag number:  10
+Sensitivty mean:  2.5452002e-10
+Sensitivty standard deviation:  6.107621e-10
+
+
+Bag number:  11
+Sensitivty mean:  4.0585443e-12
+Sensitivty standard deviation:  9.962382e-12
+
+
+Bag number:  12
+Sensitivty mean:  0.00019757322
+Sensitivty standard deviation:  0.0006868878
+
+
+Bag number:  13
+Sensitivty mean:  5.144711e-05
+Sensitivty standard deviation:  9.582383e-05
+
+
+Bag number:  14
+Sensitivty mean:  8.1101036e-11
+Sensitivty standard deviation:  1.7639609e-10
+
+
+Bag number:  15
+Sensitivty mean:  0.00023391166
+Sensitivty standard deviation:  0.0005488484
+
+
+Bag number:  16
+Sensitivty mean:  7.3377224e-14
+Sensitivty standard deviation:  1.9718623e-13
+
+
+Bag number:  17
+Sensitivty mean:  7.7346915e-15
+Sensitivty standard deviation:  1.0940086e-14
+
+
+Bag number:  18
+Sensitivty mean:  3.5391143e-13
+Sensitivty standard deviation:  5.580925e-13
+
+
+Bag number:  19
+Sensitivty mean:  2.8219167e-11
+Sensitivty standard deviation:  9.4395616e-11
+
+
+Bag number:  20
+Sensitivty mean:  3.7083576e-16
+Sensitivty standard deviation:  8.348667e-16
+
+

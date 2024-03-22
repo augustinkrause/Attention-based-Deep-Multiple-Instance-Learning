@@ -3,13 +3,15 @@ import torch.nn as nn
 
 
 class MILModel(nn.Module):
-    def __init__(self, dataset = "MUSK1", mil_type  = "embedding_based", pooling_type = "attention"):
+    def __init__(self, dataset = "MUSK1", mil_type  = "embedding_based", pooling_type = "attention", return_attentions = False):
         super(MILModel, self).__init__()
         
         if dataset == "MUSK1" or dataset == "MUSK2":
             self.input_size = 166
         elif dataset == "FOX" or dataset == "ELEPHANT" or dataset == "TIGER":
             self.input_size = 230
+        elif dataset == "TCGA":
+            self.input_size = 768
         else:
             raise ValueError("Dataset is not a classical MLI dataset")
         
@@ -30,6 +32,7 @@ class MILModel(nn.Module):
         
         self.pooling_type = pooling_type
         self.mil_type = mil_type
+        self.return_attentions = return_attentions
         self.feature_extractor = nn.Sequential(
             nn.Linear(self.input_size, 256),
             nn.ReLU(),
@@ -97,11 +100,14 @@ class MILModel(nn.Module):
             x = self.classifier(x)
             x = self.mil_layer(x.T).flatten()
 
-        return x
+        if self.return_attentions and (self.pooling_type == "attention" or self.pooling_type == "gated_attention"):
+            return x, a
+        else:
+            return x
     
 
 class MLIMNISTModel(nn.Module):
-    def __init__(self, mil_type  = "embedding_based", pooling_type = "gated_attention"):
+    def __init__(self, mil_type  = "embedding_based", pooling_type = "gated_attention", return_attentions = False):
         super(MLIMNISTModel, self).__init__()
 
         if mil_type  == "embedding_based":
@@ -121,6 +127,7 @@ class MLIMNISTModel(nn.Module):
 
         self.mil_type = mil_type
         self.pooling_type = pooling_type
+        self.return_attentions = return_attentions
         self.sigm = nn.Sigmoid()
         self.tanh = nn.Tanh()
         self.softmax = nn.Softmax(dim=0)
@@ -180,7 +187,6 @@ class MLIMNISTModel(nn.Module):
                 x = a * x
                 x = torch.sum(x, dim = 0)
                 
-
             x = self.fc2(x)
             x = self.sigm(x)
 
@@ -195,4 +201,7 @@ class MLIMNISTModel(nn.Module):
             elif self.pooling_type == "max":
                 x, _ = torch.max(x, dim = 0)
 
-        return x
+        if self.return_attentions and (self.pooling_type == "attention" or self.pooling_type == "gated_attention"):
+            return x, a
+        else:
+            return x
